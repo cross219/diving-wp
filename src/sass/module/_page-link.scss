@@ -1,0 +1,73 @@
+@use "global" as *;
+
+.page-link__flex {
+  display: flex;
+  justify-content: center;
+  gap: rem(12);
+}
+
+.page-link__prev,
+.page-link__next {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: rem(38);
+  height: rem(38);
+  background-color: $white;
+  color: $accent;
+  border: 1px solid $accent;
+  transition: 0.3s ease;
+}
+
+.page-link__prev:hover,
+.page-link__next:hover {
+  background-color: $accent;
+  color: $white;
+  opacity: 1;
+}
+
+.page-link__next a,
+.page-link__prev a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.page-link__next,
+.page-link__prev {
+  position: relative;
+}
+.page-link__next {
+  margin-left: rem(28);
+}
+.page-link__prev {
+  margin-right: rem(28);
+}
+.page-link__next::before,
+.page-link__prev::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  content: "";
+  vertical-align: middle;
+  width: rem(12);
+  height: rem(12);
+  border-top: 1px solid $accent;
+  border-right: 1px solid $accent;
+  pointer-events: none;
+}
+
+.page-link__next:hover::before,
+.page-link__prev:hover::before {
+  border-top: 1px solid $white;
+  border-right: 1px solid $white;
+}
+.page-link__next::before {
+  left: 7px;
+  transform: rotate(45deg);
+}
+
+.page-link__prev::before {
+  right: 9px;
+  transform: rotate(-135deg);
+}

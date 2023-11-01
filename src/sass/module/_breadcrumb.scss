@@ -1,0 +1,20 @@
+@use "global" as *;
+
+.breadcrumb {
+  font-size: rem(14);
+  margin-top: rem(8);
+}
+
+.breadcrumb--not-found {
+  margin-top: 0;
+  padding-top: rem(8);
+  background: $accent;
+  @include mq(md) {
+    padding-top: rem(18);
+  }
+}
+
+.breadcrumb--white {
+  color: $white;
+  background: $accent;
+}

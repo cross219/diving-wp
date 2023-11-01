@@ -1,0 +1,9 @@
+@use "global" as *;
+
+.price-cards__item.swiper-slide {
+  height: auto;
+  width: rem(280);
+  @include mq(md) {
+    width: rem(333);
+  }
+}

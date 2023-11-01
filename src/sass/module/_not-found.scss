@@ -1,0 +1,82 @@
+@use "global" as *;
+
+.not-found {
+  background: $accent;
+  // padding: rem(40) 0;
+}
+
+.not-found-layout {
+}
+
+.not-found__inner {
+}
+
+.not-found__body {
+  text-align: center;
+  padding: rem(60) 0;
+  position: relative;
+  @include mq(md) {
+    // padding-bottom: rem(148);
+    padding: rem(140) 0;
+  }
+}
+.not-found__body::after {
+  position: absolute;
+  background: url(../images/common/404.svg) no-repeat center center / contain;
+  content: "";
+  display: block;
+  max-width: rem(328);
+  width: 100%;
+  height: rem(293);
+  top: 41%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include mq(md) {
+    max-width: rem(669);
+    width: 100%;
+    height: rem(594);
+    left: 32%;
+    top: 48%;
+    // max-width: rem(689);
+    // width: 100%;
+    // height: rem(689);
+  }
+}
+
+.not-found__title {
+  color: $white;
+  font-family: $third-font-family;
+  font-size: rem(80);
+  letter-spacing: rem(80);
+  text-indent: rem(80);
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  @include mq(md) {
+    font-size: rem(160);
+  }
+}
+
+.not-found__text {
+  color: $white;
+  font-family: $third-font-family;
+  font-size: rem(16);
+  line-height: 1.5;
+  @include mq(md) {
+    margin-top: rem(35);
+  }
+}
+
+.not-found__button {
+  margin-top: rem(40);
+  @include mq(md) {
+    margin-top: rem(80);
+  }
+}
+
+.button {
+}
+
+.button__arrow {
+}
+

@@ -1,0 +1,52 @@
+@use "global" as *;
+
+.lower-blog {
+
+}
+
+
+
+
+
+
+.lower-blog__inner {
+
+}
+
+
+
+.lower-blog__contents {
+  // padding: 0 rem(6);
+  @include mq(md) {
+    display: flex;
+    gap: 7.40740741%;
+    // padding: 0;
+  }
+}
+
+.lower-blog__content {
+  width: 100%;
+  @include mq(md) {
+    width: 67.88461538%;
+    
+  }
+}
+
+.lower-blog__items {
+  padding: 0 rem(6);
+@include mq(md) {
+  padding: 0;
+
+}
+}
+
+.lower-blog__aside  {
+  @include mq(md) {
+    width: 28%;;
+  }
+
+}
+
+.lower-blog__pagenavi {
+    margin-top: rem(80);
+}
