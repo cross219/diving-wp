@@ -5,7 +5,8 @@
   cursor: pointer;
 }
 
-.toggle__list:nth-child(n + 2) {
+
+.toggle__list:not(:first-of-type) {
   margin-top: rem(6);
 }
 
