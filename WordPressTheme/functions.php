@@ -36,29 +36,16 @@ function my_setup()
 }
 add_action('after_setup_theme', 'my_setup');
 
+
+//抜粋を85文字に変更
 function custom_excerpt_length($length)
 {
 	return 85;
 }
 add_filter('excerpt_length', 'custom_excerpt_length', 999);
 
-/**
- * @param string $page_title ページのtitle属性値
- * @param string $menu_title 管理画面のメニューに表示するタイトル
- * @param string $capability メニューを操作できる権限（maange_options とか）
- * @param string $menu_slug オプションページのスラッグ。ユニークな値にすること。
- * @param string|null $icon_url メニューに表示するアイコンの URL
- * @param int $position メニューの位置
- */
 
-SCF::add_options_page(
-	'実績サイト',
-	'実績情報',
-	'manage_options',
-	'work-option',
-	'dashicons-admin-generic',
-	11
-);
+
 
 
 //コンタクトフォーム キャンペーン ドロップダウンリスト
@@ -122,5 +109,16 @@ function setPostViews($postID) {
     update_post_meta($postID, $count_key, $count);
   }
 }
-
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+
+//表示件数を設定
+add_action('pre_get_posts','my_pre_get_posts');
+function my_pre_get_posts( $query ) {
+//campaign
+ if($query -> is_post_type_archive('campaign')){
+ $query -> set('posts_per_page',4); 
+ }
+
+
+}

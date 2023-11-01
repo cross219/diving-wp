@@ -10,10 +10,10 @@ $about = esc_url(home_url('/about/'));
 $information = esc_url(home_url('/information/'));
 $blog = esc_url(home_url('/blog/'));
 $voice = esc_url(home_url('/voice/'));
-$price = esc_url(home_url('/price/'));
+$pricepage = esc_url(home_url('/price/'));
 $faq = esc_url(home_url('/faq/'));
 $contact = esc_url(home_url('/contact/'));
-$policy = esc_url(home_url('/privacy-policy/'));
+$policy = esc_url(home_url('/privacypolicy/'));
 $terms = esc_url(home_url('/terms-of-service/'));
 $sitemap = esc_url(home_url('/sitemap/'));
 ?>
@@ -212,7 +212,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
                   <div class="blog-card__title"><?php the_title(); ?></div>
                 </div>
                 <p class="blog-card__text">
-                  <?php echo wp_trim_words(get_the_content(), 80, '…'); ?>
+                  <?php echo wp_trim_words(get_the_content(), 85, '…'); ?>
                 </p>
               </div>
             </a>
@@ -244,7 +244,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
       <?php if ($the_query->have_posts()) : ?>
         <div class="voice__items voice-cards">
           <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-            <a class="voice-cards__item voice-card">
+            <div class="voice-cards__item voice-card">
               <div class="voice-card__upper">
                 <div class="voice-card__title-box">
                   <div class="voice-card__meta">
@@ -270,16 +270,22 @@ $sitemap = esc_url(home_url('/sitemap/'));
                   <?php endif; ?>
                 </div>
               </div>
-              <div class="voice-card__text">
-                <?php $text = get_field('content');
-                if ($text) {
-                  echo $text;
-                } ?>
-              </div>
-            <?php endwhile; ?>
-            <?php wp_reset_postdata(); ?>
-            </a>
-          <?php endif; ?>
+              <p class="voice-card__text">
+
+                <?php
+                $voice_text = get_field('content');
+                if (mb_strlen($voice_text, 'UTF-8') > 200) {
+                  $voice_text = mb_substr($voice_text, 0, 200, 'UTF-8');
+                  echo $voice_text . '…';
+                } else {
+                  echo $voice_text;
+                }
+                ?>
+              </p>
+            </div>
+          <?php endwhile; ?>
+          <?php wp_reset_postdata(); ?>
+        <?php endif; ?>
         </div>
         <div class="voice__button">
           <a href="<?php echo $voice; ?>" class="button">View more<span class="button__arrow"></span></a>
@@ -382,7 +388,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
         </div>
       </div>
       <div class="price__button">
-        <a href="<?php echo $price; ?>" class="button">View more<span class="button__arrow"></span></a>
+        <a href="<?php echo $pricepage; ?>" class="button">View more<span class="button__arrow"></span></a>
       </div>
     </div>
   </section>

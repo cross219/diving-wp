@@ -232,12 +232,7 @@ $contact = esc_url(home_url('/contact/'));
           }
           ?>
         </ul>
-
-
-
-
       </div>
-
     </div>
   </div>
 </div>

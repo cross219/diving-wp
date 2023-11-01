@@ -1,11 +1,11 @@
 @use "global" as *;
 
-.toggle-list {
+.toggle__list {
   list-style: none;
   cursor: pointer;
 }
 
-.toggle-list:nth-child(n + 2) {
+.toggle__list:nth-child(n + 2) {
   margin-top: rem(6);
 }
 

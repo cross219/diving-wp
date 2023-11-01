@@ -11,7 +11,7 @@ $voice = esc_url(home_url('/voice/'));
 $price = esc_url(home_url('/price/'));
 $faq = esc_url(home_url('/faq/'));
 $contact = esc_url(home_url('/contact/'));
-$policy = esc_url(home_url('/privacy-policy/'));
+$policy = esc_url(home_url('/privacypolicy/'));
 $terms = esc_url(home_url('/terms-of-service/'));
 $sitemap = esc_url(home_url('/sitemap/'));
 ?>
@@ -89,8 +89,8 @@ if (is_404()) {
         </a>
       </div>
       <div class="footer__sns-items">
-        <a href="#" class="footer__sns-item"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/facebook.svg" alt="facebookのリンク" /></a>
-        <a href="#" class="footer__sns-item"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/instagram.svg" alt="instagramのリンク" /></a>
+        <a href="https://www.facebook.com" target="_blank" class="footer__sns-item"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/facebook.svg" alt="facebookのリンク" /></a>
+        <a href="https://www.instagram.com" target="_blank" class="footer__sns-item"><img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/instagram.svg" alt="instagramのリンク" /></a>
       </div>
     </div>
     <nav class="footer__nav site-nav">
@@ -100,7 +100,7 @@ if (is_404()) {
             <a href="<?php echo $campaign; ?>">キャンペーン</a>
           </li>
           <li class="site-nav__item">
-            <a href="" <?php echo $license; ?>">ライセンス取得</a>
+            <a href="" <?php echo $license; ?>">ライセンス講習</a>
           </li>
           <li class="site-nav__item">
             <a href="<?php echo $diving; ?>">ファンダイビング</a>

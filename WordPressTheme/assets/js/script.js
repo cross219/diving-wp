@@ -19,18 +19,27 @@ jQuery(function ($) {
     //inviewを使って背景色が画面に現れたら処理をする
     color.on("inview", function () {
       if (counter == 0) {
-        $(this).delay(200).animate({
-          width: "100%"
-        }, speed, function () {
-          image.css("opacity", "1");
-          $(this).css({
-            left: "0",
-            right: "auto"
-          });
-          $(this).animate({
-            width: "0%"
-          }, speed);
-        });
+        $(this)
+          .delay(200)
+          .animate(
+            {
+              width: "100%",
+            },
+            speed,
+            function () {
+              image.css("opacity", "1");
+              $(this).css({
+                left: "0",
+                right: "auto",
+              });
+              $(this).animate(
+                {
+                  width: "0%",
+                },
+                speed
+              );
+            }
+          );
         counter = 1;
       }
     });
@@ -53,8 +62,8 @@ jQuery(function ($) {
     effect: "fade",
     clickable: true,
     autoplay: {
-      delay: 4000
-    }
+      delay: 4000,
+    },
   });
   var swiper = new Swiper(".js-campaign-swiper", {
     loop: true,
@@ -70,18 +79,18 @@ jQuery(function ($) {
     centeredSlides: false,
     autoplay: {
       delay: 3000,
-      disableOnInteraction: false // 矢印をクリックしても自動再生を止めない
+      disableOnInteraction: false, // 矢印をクリックしても自動再生を止めない
     },
 
     navigation: {
       nextEl: ".campaign-swiper__button-next",
-      prevEl: ".campaign-swiper__button-prev"
+      prevEl: ".campaign-swiper__button-prev",
     },
     breakpoints: {
       768: {
-        spaceBetween: 40 // スライド間の距離
-      }
-    }
+        spaceBetween: 40, // スライド間の距離
+      },
+    },
   });
   //  ヘッダークラス名付与
   var height = $(".fv ,.sub-mv").height();
@@ -96,9 +105,13 @@ jQuery(function ($) {
   });
   // ボタンをクリックしたらスクロールして上に戻る
   topBtn.click(function () {
-    $("body,html").animate({
-      scrollTop: 0
-    }, 300, "swing");
+    $("body,html").animate(
+      {
+        scrollTop: 0,
+      },
+      300,
+      "swing"
+    );
     return false;
   });
   //タブ切り替え
@@ -195,9 +208,13 @@ jQuery(function ($) {
       if (hasError) {
         e.preventDefault();
         // エラーがある場合、フォームの上部までスクロール
-        $("body,html").animate({
-          scrollTop: 0
-        }, 500, "swing");
+        $("body,html").animate(
+          {
+            scrollTop: 0,
+          },
+          500,
+          "swing"
+        );
       }
     });
     // 入力要素にフォーカスがあたったときの処理を設定
@@ -219,6 +236,16 @@ jQuery(function ($) {
       } else {
         $('#form input[type="submit"]').prop("disabled", true); // チェックが外れたらdisabledを設定
       }
+    });
+  });
+
+  // アーカイブ
+  $(document).ready(function () {
+    $(".toggle__year:first").addClass("open");
+    $(".toggle__items:first").css("display", "block");
+    $(".js-toggle--year").click(function () {
+      $(this).next(".toggle__items").slideToggle();
+      $(this).toggleClass("open");
     });
   });
 });
