@@ -33,12 +33,12 @@
     display: flex;
     align-items: top;
   }
-  // .wpcf7-form-control-wrap {
-  //   display: block;
-  // }
-  // .wpcf7-text {
-  //   display: block;
-  // }
+  .wpcf7-form-control-wrap {
+    display: block;
+  }
+  .wpcf7-text {
+    display: block;
+  }
 }
 
 .form__item dt {
@@ -52,7 +52,7 @@
   font-size: rem(12);
   font-weight: $normal;
   margin-left: rem(3);
-  padding: rem(2) rem(19);
+  padding: rem(4) rem(19);
 }
 .form__item dd {
   max-width: rem(345);

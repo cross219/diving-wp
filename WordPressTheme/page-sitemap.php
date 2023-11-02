@@ -42,7 +42,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
             <a href="<?php echo $campaign; ?>">キャンペーン</a>
           </li>
           <li class="page-sitemap__item">
-            <a href="" <?php echo $license; ?>">ライセンス取得</a>
+            <a href="<?php echo $license; ?>">ライセンス講習</a>
           </li>
           <li class="page-sitemap__item">
             <a href="<?php echo $diving; ?>">ファンダイビング</a>
@@ -60,13 +60,13 @@ $sitemap = esc_url(home_url('/sitemap/'));
             <a href="<?php echo $information; ?>">ダイビング情報</a>
           </li>
           <li class="page-sitemap__item">
-            <a href="<?php echo $information; ?>">ライセンス講習</a>
+            <a href="<?php echo $information; ?>?tabId=tab1">ライセンス講習</a>
           </li>
           <li class="page-sitemap__item">
-            <a href="<?php echo $information; ?>">体験ダイビング</a>
+            <a href="<?php echo $information; ?>?tabId=tab3">体験ダイビング</a>
           </li>
           <li class="page-sitemap__item">
-            <a href="<?php echo $information; ?>">ファンダイビング</a>
+            <a href="<?php echo $information; ?>?tabId=tab2">ファンダイビング</a>
           </li>
           <li class="page-sitemap__item page-sitemap__item--section page-sitemap__item--margin-sp page-sitemap__item--margin-pc">
             <a href="<?php echo $blog; ?>">ブログ</a>
@@ -100,6 +100,9 @@ $sitemap = esc_url(home_url('/sitemap/'));
           </li>
           <li class="page-sitemap__item page-sitemap__item--section page-sitemap__item--margin--sp page-sitemap__item--margin-pc">
             <a href="<?php echo $terms; ?>">利用規約</a>
+          </li>
+          <li class="page-sitemap__item page-sitemap__item--section page-sitemap__item--margin--sp page-sitemap__item--margin-pc">
+            <a href="<?php echo $sitemap; ?>">サイトマップ</a>
           </li>
           <li class="page-sitemap__item page-sitemap__item--section page-sitemap__item--margin--sp page-sitemap__item--margin-pc">
             <a href="<?php echo $contact; ?>">お問い合わせ</a>

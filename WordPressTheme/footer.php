@@ -100,7 +100,7 @@ if (is_404()) {
             <a href="<?php echo $campaign; ?>">キャンペーン</a>
           </li>
           <li class="site-nav__item">
-            <a href="" <?php echo $license; ?>">ライセンス講習</a>
+            <a href="<?php echo $license; ?>">ライセンス講習</a>
           </li>
           <li class="site-nav__item">
             <a href="<?php echo $diving; ?>">ファンダイビング</a>

@@ -45,9 +45,6 @@ function custom_excerpt_length($length)
 add_filter('excerpt_length', 'custom_excerpt_length', 999);
 
 
-
-
-
 //コンタクトフォーム キャンペーン ドロップダウンリスト
 function custom_get_select_values($values, $options, $args)
 {
@@ -76,49 +73,58 @@ function wpcf7_autop_return_false()
 	return false;
 }
 
-function is_parent_slug() {
+function is_parent_slug()
+{
 	global $post;
 	if ($post->post_parent) {
-			$post_data = get_post($post->post_parent);
-			return $post_data->post_name;
+		$post_data = get_post($post->post_parent);
+		return $post_data->post_name;
 	}
 }
 
-function getPostViews($postID) {
-  $count_key = 'post_views_count';
-  $count = get_post_meta($postID, $count_key, true);
-  if ($count == '') {
-    delete_post_meta($postID, $count_key);
-    add_post_meta($postID, $count_key, '0');
-    return '0 PV';
-    // return '0 View';
-  }
-  return $count.' PV';
-  // return $count.'Views';
+function getPostViews($postID)
+{
+	$count_key = 'post_views_count';
+	$count = get_post_meta($postID, $count_key, true);
+	if ($count == '') {
+		delete_post_meta($postID, $count_key);
+		add_post_meta($postID, $count_key, '0');
+		return '0 PV';
+		// return '0 View';
+	}
+	return $count . ' PV';
+	// return $count.'Views';
 }
 
-function setPostViews($postID) {
-  $count_key = 'post_views_count';
-  $count = get_post_meta($postID, $count_key, true);
-  if ($count == '') {
-    $count = 0;
-    delete_post_meta($postID, $count_key);
-    add_post_meta($postID, $count_key, '0');
-  } else {
-    $count++;
-    update_post_meta($postID, $count_key, $count);
-  }
+function setPostViews($postID)
+{
+	$count_key = 'post_views_count';
+	$count = get_post_meta($postID, $count_key, true);
+	if ($count == '') {
+		$count = 0;
+		delete_post_meta($postID, $count_key);
+		add_post_meta($postID, $count_key, '0');
+	} else {
+		$count++;
+		update_post_meta($postID, $count_key, $count);
+	}
 }
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 
 //表示件数を設定
-add_action('pre_get_posts','my_pre_get_posts');
-function my_pre_get_posts( $query ) {
-//campaign
- if($query -> is_post_type_archive('campaign')){
- $query -> set('posts_per_page',4); 
- }
+add_action('pre_get_posts', 'my_pre_get_posts');
+function my_pre_get_posts($query)
+{
+	//campaign
+	if ($query->is_post_type_archive('campaign')) {
+		$query->set('posts_per_page', 4);
+	}
+	if ($query->is_post_type_archive('voice')) {
+		$query->set('posts_per_page', 6);
+	}
+
+
 
 
 }

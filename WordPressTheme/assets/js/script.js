@@ -183,6 +183,7 @@ jQuery(function ($) {
       clickedAccordion.addClass("close");
     }
   });
+  
   //form
   $(document).ready(function () {
     // 必須項目の入力要素を取得
@@ -205,17 +206,17 @@ jQuery(function ($) {
         }
       });
       // エラーがある場合はフォーム送信をキャンセル
-      if (hasError) {
-        e.preventDefault();
-        // エラーがある場合、フォームの上部までスクロール
-        $("body,html").animate(
-          {
-            scrollTop: 0,
-          },
-          500,
-          "swing"
-        );
-      }
+      // if (hasError) {
+      //   e.preventDefault();
+      //   // エラーがある場合、フォームの上部までスクロール
+      //   $("body,html").animate(
+      //     {
+      //       scrollTop: 0,
+      //     },
+      //     500,
+      //     "swing"
+      //   );
+      // }
     });
     // 入力要素にフォーカスがあたったときの処理を設定
     requiredInputs.on("blur", function () {
@@ -230,13 +231,13 @@ jQuery(function ($) {
       }
     });
     // .js-submit-checkの変更時に送信ボタンのdisabled属性を制御
-    $(".js-submit-check").on("change", function () {
-      if ($(this).is(":checked")) {
-        $('#form input[type="submit"]').prop("disabled", false); // チェックが入ったらdisabledを解除
-      } else {
-        $('#form input[type="submit"]').prop("disabled", true); // チェックが外れたらdisabledを設定
-      }
-    });
+    // $(".js-submit-check").on("change", function () {
+    //   if ($(this).is(":checked")) {
+    //     $('#form input[type="submit"]').prop("disabled", false); // チェックが入ったらdisabledを解除
+    //   } else {
+    //     $('#form input[type="submit"]').prop("disabled", true); // チェックが外れたらdisabledを設定
+    //   }
+    // });
   });
 
   // アーカイブ

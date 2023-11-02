@@ -1185,6 +1185,10 @@ textarea {
 	display: none !important;
 }
 
+.wpcf7-form.invalid .wpcf7-response-output {
+	display: none !important;
+}
+
 .wpcf7-form.sent .wpcf7-response-output {
 	display: none !important;
 }
@@ -1214,6 +1218,14 @@ textarea {
 	padding-bottom: 1.4375rem;
 }
 
+.form__item .wpcf7-form-control-wrap {
+	display: block;
+}
+
+.form__item .wpcf7-text {
+	display: block;
+}
+
 .form__item dt {
 	font-size: 0.9375rem;
 	font-weight: 600;
@@ -1226,7 +1238,7 @@ textarea {
 	font-size: 0.75rem;
 	font-weight: 400;
 	margin-left: 0.1875rem;
-	padding: 0.125rem 1.1875rem;
+	padding: 0.25rem 1.1875rem;
 }
 
 .form__item dd {
