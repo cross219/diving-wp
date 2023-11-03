@@ -306,7 +306,6 @@ $sitemap = esc_url(home_url('/sitemap/'));
         <div class="price__contents">
           <div class="price__content price-table">
             <h3 class="price-table__heading">ライセンス講習</h3>
-
             <dl class="price-table__content">
               <?php
               $priceTable = SCF::get('price-table1', 118);
@@ -324,8 +323,6 @@ $sitemap = esc_url(home_url('/sitemap/'));
               }
               ?>
             </dl>
-
-
           </div>
           <div class="price__content price-table">
             <h3 class="price-table__heading">体験ダイビング</h3>
@@ -345,6 +342,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
                 }
               }
               ?>
+            </dl>
           </div>
           <div class="price__content price-table">
             <h3 class="price-table__heading">ファンダイビング</h3>
