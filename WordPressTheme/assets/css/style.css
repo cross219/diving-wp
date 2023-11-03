@@ -372,7 +372,7 @@ a {
 	aspect-ratio: 121/90;
 	margin-top: 0.3125rem;
 	overflow: hidden;
-	width: 46.18320611%;
+	width: 46.1%;
 }
 
 .aside-article__img img {
@@ -380,6 +380,10 @@ a {
 	height: 100%;
 	object-fit: cover;
 	width: 100%;
+}
+
+.aside-article__body {
+	width: 53.9%;
 }
 
 .aside-article__date {
