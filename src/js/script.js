@@ -55,10 +55,10 @@ jQuery(function ($) {
     spaceBetween: 24, // スライド間の距離
     slidesPerView: "auto", // 一度に表示する枚数
     paginationClickable: true,
-    speed: 1000, 
+    speed: 1000,
     grabCursor: true,
-    allowTouchMove: true, 
-    centeredSlides: false, 
+    allowTouchMove: true,
+    centeredSlides: false,
     autoplay: {
       delay: 3000,
       disableOnInteraction: false, // 矢印をクリックしても自動再生を止めない
@@ -163,6 +163,16 @@ jQuery(function ($) {
       clickedAccordion.addClass("close");
     }
   });
+
+  $(document).ready(function () {
+    $(".toggle__year:first").addClass("open");
+    $(".toggle__items:first").css("display", "block");
+    $(".js-toggle--year").click(function () {
+      $(this).next(".toggle__items").slideToggle();
+      $(this).toggleClass("open");
+    });
+  });
+
   //form
   $(document).ready(function () {
     // 必須項目の入力要素を取得
