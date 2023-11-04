@@ -184,7 +184,6 @@ jQuery(function ($) {
     }
   });
 
-  
   $(document).ready(function () {
     $(".toggle__year:first").addClass("open");
     $(".toggle__items:first").css("display", "block");

@@ -236,4 +236,3 @@ $contact = esc_url(home_url('/contact/'));
     </div>
   </div>
 </div>
-</div>
