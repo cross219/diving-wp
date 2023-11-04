@@ -113,18 +113,20 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 
 //表示件数を設定
-add_action('pre_get_posts', 'my_pre_get_posts');
+
 function my_pre_get_posts($query)
 {
-	//campaign
+	if (is_admin() || !$query->is_main_query()) {
+		return;
+	}
 	if ($query->is_post_type_archive('campaign')) {
+		// カスタム投稿タイプ「news」の場合
 		$query->set('posts_per_page', 4);
 	}
 	if ($query->is_post_type_archive('voice')) {
+		// カスタム投稿タイプ「news」の場合
 		$query->set('posts_per_page', 6);
 	}
-
-
-
-
 }
+add_action('pre_get_posts', 'my_pre_get_posts');
+
