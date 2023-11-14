@@ -50,17 +50,16 @@
                       $next_url = esc_url(get_permalink($next->ID));
                     }
                     ?>
-                    <div class="page-link__prev">
-                      <?php if (!empty($prev)) : ?>
+                    <?php if (!empty($prev)) : ?>
+                      <div class="page-link__prev">
                         <a href="<?php echo $prev_url; ?>"></a>
-                      <?php endif; ?>
-                    </div>
-                    <div class="page-link__next">
-                      <?php if (!empty($next)) : ?>
-                        <a href="<?php echo $next_url; ?>">
-                        </a>
-                      <?php endif; ?>
-                    </div>
+                      </div>
+                    <?php endif; ?>
+                    <?php if (!empty($next)) : ?>
+                      <div class="page-link__next">
+                        <a href="<?php echo $next_url; ?>"></a>
+                      </div>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>
@@ -68,9 +67,9 @@
         <?php endwhile;
         endif; ?>
 
-        <aside class="lower-blog__aside aside">
+        <div class="lower-blog__aside">
           <?php get_sidebar(); ?>
-        </aside>
+        </div>
       </div>
     </div>
   </section>

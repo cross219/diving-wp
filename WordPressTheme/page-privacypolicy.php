@@ -14,16 +14,21 @@
 
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
-  
+
 
   <section class="page-privacypolicy lower-bg page-privacypolicy-layout">
     <div class="page-privacypolicy__inner inner">
-      <div class="page-privacypolicy__body">
-        <h3 class="page-privacypolicy__title"><?php the_title(); ?></h3>
-        <div class="page-privacypolicy__content">
-          <?php the_content(); ?>
-        </div>
-      </div>
+      <?php if (have_posts()) :
+        while (have_posts()) :
+          the_post(); ?>
+          <div class="page-privacypolicy__body">
+            <h3 class="page-privacypolicy__title"><?php the_title(); ?></h3>
+            <div class="page-privacypolicy__content">
+              <?php the_content(); ?>
+            </div>
+          </div>
+      <?php endwhile;
+      endif; ?>
     </div>
   </section>
 

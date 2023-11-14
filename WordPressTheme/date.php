@@ -49,9 +49,9 @@
           </div>
 
         </div>
-        <aside class="lower-blog__aside aside">
+        <div class="lower-blog__aside ">
           <?php get_sidebar(); ?>
-        </aside>
+        </div>
 
       </div>
     </div>

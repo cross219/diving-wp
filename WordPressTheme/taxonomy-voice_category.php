@@ -48,12 +48,12 @@
                   <div class="voice-card__upper">
                     <div class="voice-card__title-box">
                       <div class="voice-card__meta">
-                        <div class="voice-card__age">
-                          <?php $text = get_field('age');
-                          if ($text) {
-                            echo $text;
-                          } ?>
-                        </div>
+                        <?php $age = get_field('age');
+                        if ($age) : ?>
+                          <div class="voice-card__age">
+                            <?php echo $age ?>
+                          </div>
+                        <?php endif; ?>
                         <?php
                         $taxonomy_terms = get_the_terms($post->ID, 'voice_category');
                         if ($taxonomy_terms) : ?>

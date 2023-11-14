@@ -13,16 +13,21 @@
 
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
-  
+
 
   <section class="page-terms lower-bg page-terms-layout">
     <div class="page-terms__inner inner">
-      <div class="page-terms__body">
-        <h3 class="page-terms__title"><?php the_title(); ?></h3>
-        <div class="page-terms__content">
-          <?php the_content(); ?>
-        </div>
-      </div>
+      <?php if (have_posts()) :
+        while (have_posts()) :
+          the_post(); ?>
+          <div class="page-terms__body">
+            <h3 class="page-terms__title"><?php the_title(); ?></h3>
+            <div class="page-terms__content">
+              <?php the_content(); ?>
+            </div>
+          </div>
+      <?php endwhile;
+      endif; ?>
     </div>
   </section>
 

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <?php
-$contact = esc_url( home_url( '/contact/' ) );
+$contact = esc_url(home_url('/contact/'));
 ?>
 
 <main>
@@ -65,28 +65,28 @@ $contact = esc_url( home_url( '/contact/' ) );
                       <p class="price-card__text">全部コミコミ(お一人様)</p>
                       <div class="price-card__price-box">
                         <div class="price-card__price">
-                          <span class="price-card__price--redline"><?php $text = get_field('redline');
-                                                                    if ($text) {
-                                                                      echo $text;
+                          <span class="price-card__price--redline"><?php $redline = get_field('redline');
+                                                                    if ($redline) {
+                                                                      echo $redline;
                                                                     } ?></span>
                         </div>
-                        <div class="price-card__discount"><?php $text = get_field('discount');
-                                                          if ($text) {
-                                                            echo $text;
+                        <div class="price-card__discount"><?php $discount = get_field('discount');
+                                                          if ($discount) {
+                                                            echo $discount;
                                                           } ?></div>
                       </div>
                     </div>
                     <div class="price-card__pc u-desktop">
                       <p class="price-card__description">
-                        <?php $text = get_field('description');
-                        if ($text) {
-                          echo $text;
+                        <?php $description = get_field('description');
+                        if ($description) {
+                          echo $description;
                         } ?>
                       </p>
                       <div class="price-card__link-items">
-                        <p class="price-card__period"><?php $text = get_field('campaign-period');
-                                                      if ($text) {
-                                                        echo $text;
+                        <p class="price-card__period"><?php $period = get_field('campaign-period');
+                                                      if ($period) {
+                                                        echo $period;
                                                       } ?></p>
                         <p class="price-card__contact">
                           ご予約・お問い合わせはコチラ
