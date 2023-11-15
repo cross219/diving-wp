@@ -17,7 +17,7 @@
   <section class="page-faq lower-bg page-faq-layout">
     <div class="page-faq__inner inner">
       <?php
-      $faqData = SCF::get('faq');
+      $faqData = SCF::get_option_meta('faq-options', 'faq');
       if ($faqData) :
       ?>
         <ul class="page-faq__items">
@@ -36,10 +36,10 @@
             </li>
           <?php endforeach; ?>
         </ul>
-        <?php else : ?>
-          <div>公開までお持ちください</div>
+      <?php else : ?>
+        <div>公開までお持ちください</div>
       <?php endif; ?>
     </div>
   </section>
-  
+
   <?php get_footer(); ?>

@@ -305,7 +305,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
       <div class="price__container">
         <div class="price__contents">
           <?php
-          $priceTable1 = SCF::get('price-table1', 118);
+          $priceTable1 = SCF::get_option_meta('price-options', 'price-license');
           if ($priceTable1) : ?>
             <div class="price__content price-table">
               <h3 class="price-table__heading">ライセンス講習</h3>
@@ -324,7 +324,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
             </div>
             <?php endif; ?>
             <?php
-            $priceTable2 = SCF::get('price-table2', 118);
+            $priceTable2 = SCF::get_option_meta('price-options', 'price-experience');
             if ($priceTable2) : ?>
               <div class="price__content price-table">
                 <h3 class="price-table__heading">体験ダイビング</h3>
@@ -343,7 +343,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
               </div>
             <?php endif; ?>
             <?php
-            $priceTable3 = SCF::get('price-table3', 118);
+            $priceTable3 = SCF::get_option_meta('price-options', 'price-fun');
             if ($priceTable3) : ?>
               <div class="price__content price-table">
                 <h3 class="price-table__heading">ファンダイビング</h3>
@@ -360,7 +360,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
               </div>
             <?php endif; ?>
             <?php
-            $priceTable4 = SCF::get('price-table4', 118);
+            $priceTable4 = SCF::get_option_meta('price-options', 'price-special');
             if ($priceTable4) : ?>
               <div class="price__content price-table">
                 <h3 class="price-table__heading">スペシャルダイビング</h3>

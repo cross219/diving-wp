@@ -17,7 +17,7 @@
     <div class="page-price__inner inner">
       <ul class="page-price__list-wrap">
         <?php
-        $priceTable1 = SCF::get('price-table1');
+        $priceTable1 = SCF::get_option_meta('price-options', 'price-license');
         if ($priceTable1) : ?>
           <li class="page-price__list">
             <h3 class="page-price__heading"><span>ライセンス講習</span></h3>
@@ -36,7 +36,7 @@
           </li>
         <?php endif; ?>
         <?php
-        $priceTable2 = SCF::get('price-table2');
+        $priceTable2 = SCF::get_option_meta('price-options', 'price-experience');
         if ($priceTable2) : ?>
           <li class="page-price__list">
             <h3 class="page-price__heading"><span>体験ダイビング</span></h3>
@@ -55,7 +55,7 @@
           </li>
         <?php endif; ?>
         <?php
-        $priceTable3 = SCF::get('price-table3');
+        $priceTable3 = SCF::get_option_meta('price-options', 'price-fun');
         if ($priceTable3) : ?>
           <li class="page-price__list">
             <h3 class="page-price__heading"><span>ファンダイビング</span></h3>
@@ -74,7 +74,7 @@
           </li>
         <?php endif; ?>
         <?php
-        $priceTable4 = SCF::get('price-table4');
+        $priceTable4 = SCF::get_option_meta('price-options', 'price-special');
         if ($priceTable4) : ?>
           <li class="page-price__list">
             <h3 class="page-price__heading">

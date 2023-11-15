@@ -51,18 +51,18 @@
           </div>
           <div class="gallery__container">
             <ul class="gallery__items">
-              <?php
-              $imgGroup = SCF::get('gallery_list');
-              foreach ($imgGroup as $fields) :
-                $imgurl = wp_get_attachment_image_src($fields['gallery_item'], 'full');
-              ?>
+               <?php
+                $imgGroup = SCF::get_option_meta( 'gallery-options', 'gallery_list' );
+                foreach ($imgGroup as $fields ) :
+                    $image_url = wp_get_attachment_image_src($fields['gallery_item'] , 'full');
+                ?>
                 <li class="gallery__item js-modal">
                   <?php if (empty($fields['gallery_item'])) : ?>
                     <!-- 画像がない時はnoImg画像を表示 -->
                     <img src="<?php echo get_template_directory_uri(); ?>/img/noImage.jpg" alt="No Image">
                   <?php else : ?>
                     <!-- 画像がある時は画像を表示 -->
-                    <img src="<?php echo esc_url($imgurl[0]); ?>" alt="ギャラリーの写真">
+                    <img src="<?php echo esc_url($image_url[0]); ?>" alt="ギャラリーの写真">
                   <?php endif; ?>
                 </li>
               <?php endforeach; ?>
