@@ -113,7 +113,6 @@ remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 
 //表示件数を設定
-
 function my_pre_get_posts($query)
 {
 	if (is_admin() || !$query->is_main_query()) {
@@ -131,6 +130,7 @@ function my_pre_get_posts($query)
 add_action('pre_get_posts', 'my_pre_get_posts');
 
 
+//SCF オプションページ
 /**
  * @param string $page_title ページのtitle属性値
  * @param string $menu_title 管理画面のメニューに表示するタイトル
@@ -143,10 +143,8 @@ SCF::add_options_page( 'codeups-diving-wp', 'ギャラリー画像', 'manage_opt
 SCF::add_options_page( 'codeups-diving-wp', '料金一覧', 'manage_options', 'price-options','dashicons-list-view','8' );
 SCF::add_options_page( 'codeups-diving-wp', 'よくある質問', 'manage_options', 'faq-options','dashicons-editor-help','9' );
 
-  // ==========================================================================
-  // 管理画面の投稿→ブログ
-  // ==========================================================================
 
+  // 管理画面の投稿→ブログ
 function Change_menulabel() {
   global $menu;
   global $submenu;
