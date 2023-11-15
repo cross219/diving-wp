@@ -10,10 +10,8 @@
       <h2 class="sub-mv__title">Contact</h2>
     </div>
   </div>
-
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
-
 
   <section class="page-contact lower-bg page-contact-layout">
     <div class="page-contact__inner inner">

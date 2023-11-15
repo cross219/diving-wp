@@ -16,16 +16,9 @@ $terms = esc_url(home_url('/terms-of-service/'));
 $sitemap = esc_url(home_url('/sitemap/'));
 ?>
 
-
-<?php
-// 404ページを判定
-if (is_404()) {
-  // 404ページの場合、コードを表示しない
-} elseif (is_page('contact') || is_parent_slug() === ('contact')) {
-  // contactページの場合、コードを表示しない
-} else {
-  // それ以外のページではコードを表示
-?>
+<?php if (is_404() || is_page('contact') || is_parent_slug() === 'contact') :
+// 404ページまたはcontactページの場合、コードを表示しない
+else :?>
   <section class="contact top-contact">
     <div class="contact__inner inner">
       <div class="contact__wrapper">
@@ -66,11 +59,7 @@ if (is_404()) {
       </div>
     </div>
   </section>
-<?php
-}
-?>
-
-
+<?php endif;?>
 <div class="to-top">
   <a href="#top">
     <div class="to-top__arrow">
@@ -175,5 +164,4 @@ if (is_404()) {
   <?php wp_footer(); ?>
 </footer>
 </body>
-
 </html>

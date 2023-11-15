@@ -39,7 +39,7 @@
         <?php else : ?>
           <div>公開までお持ちください</div>
       <?php endif; ?>
-
     </div>
   </section>
+  
   <?php get_footer(); ?>

@@ -15,19 +15,12 @@ $contact = esc_url(home_url('/contact/'));
         </div>
         <div class="aside-article__items">
           <?php
-
           setPostViews(get_the_ID());
-
-
           $args = array(
             'post_type' => 'post',
             'posts_per_page' => 3,
-
-            // 必須 ここから
             'orderby' => 'meta_value_num',
             'meta_key' => 'post_views_count'
-            // 必須 ここまで
-
           );
           $the_query = new WP_Query($args);
           ?>
@@ -77,11 +70,12 @@ $contact = esc_url(home_url('/contact/'));
                 <?php else : ?>
                   <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="no-mage">
                 <?php endif; ?>
-                <p class="aside-voice__age">
-                  <?php $text = get_field('age');
-                  if ($text) {
-                    echo $text;
-                  } ?></p>
+                <?php $age = get_field('age');
+                if ($age) : ?>
+                  <p class="aside-voice__age">
+                    <?php echo $age; ?>
+                  </p>
+                <?php endif; ?>
                 <h3 class="aside-voice__title"><?php the_title(); ?></h3>
               </div>
             <?php endwhile; ?>
@@ -129,23 +123,25 @@ $contact = esc_url(home_url('/contact/'));
                   <p class="price-card__text price-card__text--blog">全部コミコミ(お一人様)</p>
                   <div class="price-card__price-box price-card__price-box--blog">
                     <div class="price-card__price price-card__price--blog">
-                      <span class="price-card__price--redline"><?php $redline = get_field('redline');
-                                                                if ($redline) {
-                                                                  echo $redline;
-                                                                } ?></span>
+                      <?php $redline = get_field('redline');
+                      if ($redline) : ?>
+                        <span class="price-card__price--redline">
+                          <?php echo $redline; ?>
+                        </span>
+                      <?php endif; ?>
                     </div>
-                    <div class="price-card__discount price-card__discount--blog"><?php $discount = get_field('discount');
-                                                                                  if ($discount) {
-                                                                                    echo $discount;
-                                                                                  } ?></div>
+                    <?php $discount = get_field('discount');
+                    if ($discount) : ?>
+                      <div class="price-card__discount price-card__discount--blog">
+                        <?php echo $discount; ?>
+                      </div>
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>
             <?php endwhile; ?>
           <?php endif; ?>
           <?php wp_reset_postdata(); ?>
-
-
         </div>
         <div class="aside-campaign__button">
           <a href="<?php echo $campaign; ?>" class="button">View more<span class="button__arrow"></span></a>
@@ -164,11 +160,11 @@ $contact = esc_url(home_url('/contact/'));
             // 現在の年を取得
             $current_year = date('Y');
             // 過去3年分のアーカイブをループで処理
-            for ($year = $current_year; $year >= $current_year - 2; $year--) {
+            for ($year = $current_year; $year >= $current_year - 2; $year--) :
               // この年のアーカイブページへのリンクを取得
-              $archive_link = get_year_link($year);
+              $year_archive_link = get_year_link($year);
               // クエリの設定
-              $args = array(
+              $year_query_args = array(
                 'post_type' => 'post',
                 'post_status' => 'publish',
                 'date_query' => array(
@@ -178,9 +174,9 @@ $contact = esc_url(home_url('/contact/'));
                 ),
               );
               // クエリを実行
-              $query = new WP_Query($args);
+              $year_query = new WP_Query($year_query_args);
               // 記事が存在する場合の処理
-              if ($query->have_posts()) {
+              if ($year_query->have_posts()) :
                 // この年が現在の年かどうかを判定
                 $is_current_year = ($year === $current_year);
             ?>
@@ -191,11 +187,12 @@ $contact = esc_url(home_url('/contact/'));
                   <ul class="toggle__items">
                     <?php
                     // 各月ごとにアーカイブを処理
-                    for ($month = 12; $month >= 1; $month--) {
+                    for ($month = 12; $month >= 1; $month--) :
                       // この月のアーカイブページへのリンクを取得
-                      $archive_link = get_month_link($year, $month);
+                      $month_archive_link = get_month_link($year, $month);
+
                       // クエリの設定
-                      $args = array(
+                      $month_query_args = array(
                         'post_type' => 'post',
                         'post_status' => 'publish',
                         'date_query' => array(
@@ -206,36 +203,35 @@ $contact = esc_url(home_url('/contact/'));
                         ),
                       );
                       // クエリを実行
-                      $query = new WP_Query($args);
+                      $month_query = new WP_Query($month_query_args);
                       // 記事が存在する場合の処理
-                      if ($query->have_posts()) {
+                      if ($month_query->have_posts()) :
                         // 月のラベルを生成
-                        $month_label = date('n月', mktime(0, 0, 0, $month, 1, $year)); // 記事数を取得
-                        $post_count = $query->found_posts;
+                        $month_label = date('n月', mktime(0, 0, 0, $month, 1, $year));
+                        // 記事数を取得
+                        $post_count = $month_query->found_posts;
                     ?>
                         <li class="toggle__item">
-                          <a href="<?php echo $archive_link; ?>">
+                          <a href="<?php echo esc_url($month_archive_link); ?>">
                             <p class="toggle__month">
-                              <span><?php echo $month_label; ?></span>
-                              (<?php echo $post_count; ?>)
-                              <!-- 記事数を表示 -->
+                              <span><?php echo esc_html($month_label); ?></span>
+                              (<?php echo esc_html($post_count); ?>)
                             </p>
                           </a>
                         </li>
                     <?php
-                      }
-                    }
+                      endif;
+                    endfor;
                     ?>
                   </ul>
                 </li>
             <?php
-              }
-            }
+              endif;
+            endfor;
             ?>
           </ul>
         </div>
       </div>
     </div>
   </div>
-
 </aside>

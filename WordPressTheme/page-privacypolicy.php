@@ -11,10 +11,8 @@
       <h2 class="sub-mv__title">Privacy Policy</h2>
     </div>
   </div>
-
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
-
 
   <section class="page-privacypolicy lower-bg page-privacypolicy-layout">
     <div class="page-privacypolicy__inner inner">

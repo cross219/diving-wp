@@ -29,10 +29,8 @@ $sitemap = esc_url(home_url('/sitemap/'));
       <h2 class="sub-mv__title">Site MAP</h2>
     </div>
   </div>
-
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
-
 
   <div class="page-sitemap lower-bg page-sitemap-layout">
     <div class="page-sitemap__inner inner">
@@ -54,7 +52,6 @@ $sitemap = esc_url(home_url('/sitemap/'));
             <a href="<?php echo $about; ?>">私たちについて</a>
           </li>
         </ul>
-
         <ul class="page-sitemap__items">
           <li class="page-sitemap__item page-sitemap__item--section page-sitemap__item--margin-sp">
             <a href="<?php echo $information; ?>">ダイビング情報</a>
@@ -72,7 +69,6 @@ $sitemap = esc_url(home_url('/sitemap/'));
             <a href="<?php echo $blog; ?>">ブログ</a>
           </li>
         </ul>
-
         <ul class="page-sitemap__items page-sitemap__items--right">
           <li class="page-sitemap__item page-sitemap__item--section">
             <a href="<?php echo $voice; ?>">お客様の声</a>

@@ -49,9 +49,6 @@ $sitemap = esc_url(home_url('/sitemap/'));
                 <img src="<?php the_field('mv-pc4'); ?>" alt="" />
               </picture>
             </div>
-
-
-
           </div>
         </div>
         <div class="fv__title-box">
@@ -98,15 +95,17 @@ $sitemap = esc_url(home_url('/sitemap/'));
                     <p class="price-card__text">全部コミコミ(お一人様)</p>
                     <div class="price-card__price-box">
                       <div class="price-card__price">
-                        <span class="price-card__price--redline"><?php $text = get_field('redline');
-                                                                  if ($text) {
-                                                                    echo $text;
-                                                                  } ?></span>
+                        <?php $redline = get_field('redline');
+                        if ($redline) : ?>
+                          <span class="price-card__price--redline"><?php echo $redline; ?></span>
                       </div>
-                      <div class="price-card__discount"><?php $text = get_field('discount');
-                                                        if ($text) {
-                                                          echo $text;
-                                                        } ?></div>
+                    <?php endif; ?>
+                    <?php $discount = get_field('discount');
+                    if ($discount) : ?>
+                      <div class="price-card__discount">
+                        <?php echo $discount; ?>
+                      </div>
+                    <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -273,7 +272,6 @@ $sitemap = esc_url(home_url('/sitemap/'));
                 </div>
               </div>
               <p class="voice-card__text">
-
                 <?php
                 $voice_text = get_field('content');
                 if (mb_strlen($voice_text, 'UTF-8') > 200) {
@@ -306,82 +304,77 @@ $sitemap = esc_url(home_url('/sitemap/'));
       </div>
       <div class="price__container">
         <div class="price__contents">
-          <div class="price__content price-table">
-            <h3 class="price-table__heading">ライセンス講習</h3>
-            <dl class="price-table__content">
-              <?php
-              $priceTable = SCF::get('price-table1', 118);
-              if ($priceTable) {
-                foreach ($priceTable as $priceItem) {
-                  $course = esc_html($priceItem['course1']);
-                  $price = esc_html($priceItem['price1']);
-              ?>
+          <?php
+          $priceTable1 = SCF::get('price-table1', 118);
+          if ($priceTable1) : ?>
+            <div class="price__content price-table">
+              <h3 class="price-table__heading">ライセンス講習</h3>
+              <dl class="price-table__content">
+                <?php
+                foreach ($priceTable1 as $priceItem1) :
+                  $course1 = esc_html($priceItem1['course1']);
+                  $price1 = esc_html($priceItem1['price1']);
+                ?>
                   <dt class="price-table__course">
-                    <?php echo $course; ?>
+                    <?php echo $course1; ?>
                   </dt>
-                  <dd class="price-table__price"><?php echo $price; ?></dd>
-              <?php
-                }
-              }
-              ?>
-            </dl>
-          </div>
-          <div class="price__content price-table">
-            <h3 class="price-table__heading">体験ダイビング</h3>
-            <dl class="price-table__content">
-              <?php
-              $priceTable = SCF::get('price-table2', 118);
-              if ($priceTable) {
-                foreach ($priceTable as $priceItem) {
-                  $course = esc_html($priceItem['course2']);
-                  $price = esc_html($priceItem['price2']);
-              ?>
-                  <dt class="price-table__course">
-                    <?php echo $course; ?>
-                  </dt>
-                  <dd class="price-table__price"><?php echo $price; ?></dd>
-              <?php
-                }
-              }
-              ?>
-            </dl>
-          </div>
-          <div class="price__content price-table">
-            <h3 class="price-table__heading">ファンダイビング</h3>
-            <dl class="price-table__content">
-              <?php
-              $priceTable = SCF::get('price-table3', 118);
-              if ($priceTable) {
-                foreach ($priceTable as $priceItem) {
-                  $course = esc_html($priceItem['course3']);
-                  $price = esc_html($priceItem['price3']);
-              ?>
-                  <dt class="price-table__course"><?php echo $course; ?></dt>
-                  <dd class="price-table__price"><?php echo $price; ?></dd>
-              <?php
-                }
-              }
-              ?>
-            </dl>
-          </div>
-          <div class="price__content price-table">
-            <h3 class="price-table__heading">スペシャルダイビング</h3>
-            <dl class="price-table__content">
-              <?php
-              $priceTable = SCF::get('price-table4', 118);
-              if ($priceTable) {
-                foreach ($priceTable as $priceItem) {
-                  $course = esc_html($priceItem['course4']);
-                  $price = esc_html($priceItem['price4']);
-              ?>
-                  <dt class="price-table__course"><?php echo $course; ?></dt>
-                  <dd class="price-table__price"><?php echo $price; ?></dd>
-              <?php
-                }
-              }
-              ?>
-            </dl>
-          </div>
+                  <dd class="price-table__price"><?php echo $price1; ?></dd>
+                <?php endforeach; ?>
+              </dl>
+            </div>
+            <?php endif; ?>
+            <?php
+            $priceTable2 = SCF::get('price-table2', 118);
+            if ($priceTable2) : ?>
+              <div class="price__content price-table">
+                <h3 class="price-table__heading">体験ダイビング</h3>
+                <dl class="price-table__content">
+                  <?php
+                  foreach ($priceTable2 as $priceItem2) :
+                    $course2 = esc_html($priceItem2['course2']);
+                    $price2 = esc_html($priceItem2['price2']);
+                  ?>
+                    <dt class="price-table__course">
+                      <?php echo $course2; ?>
+                    </dt>
+                    <dd class="price-table__price"><?php echo $price2; ?></dd>
+                  <?php endforeach; ?>
+                </dl>
+              </div>
+            <?php endif; ?>
+            <?php
+            $priceTable3 = SCF::get('price-table3', 118);
+            if ($priceTable3) : ?>
+              <div class="price__content price-table">
+                <h3 class="price-table__heading">ファンダイビング</h3>
+                <dl class="price-table__content">
+                  <?php foreach ($priceTable3 as $priceItem3) :
+                    $course3 = esc_html($priceItem3['course3']);
+                    $price3 = esc_html($priceItem3['price3']);
+                  ?>
+                    <dt class="price-table__course"><?php echo $course3; ?></dt>
+                    <dd class="price-table__price"><?php echo $price3; ?></dd>
+                  <?php endforeach;
+                  ?>
+                </dl>
+              </div>
+            <?php endif; ?>
+            <?php
+            $priceTable4 = SCF::get('price-table4', 118);
+            if ($priceTable4) : ?>
+              <div class="price__content price-table">
+                <h3 class="price-table__heading">スペシャルダイビング</h3>
+                <dl class="price-table__content">
+                  <?php foreach ($priceTable4 as $priceItem4) :
+                    $course4 = esc_html($priceItem4['course4']);
+                    $price4 = esc_html($priceItem4['price4']);
+                  ?>
+                    <dt class="price-table__course"><?php echo $course4; ?></dt>
+                    <dd class="price-table__price"><?php echo $price4; ?></dd>
+                  <?php endforeach; ?>
+                </dl>
+              </div>
+            <?php endif; ?>
         </div>
         <div class="price__pc-img u-desktop animate-img js-colorbox">
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/price_pc.jpg" alt="" />

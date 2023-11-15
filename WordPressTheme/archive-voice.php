@@ -67,12 +67,12 @@
                       <?php endif; ?>
                     </div>
                   </div>
-                  <div class="voice-card__text">
-                    <?php $text = get_field('content');
-                    if ($text) {
-                      echo $text;
-                    } ?>
-                  </div>
+                  <?php $content = get_field('content');
+                  if ($content) : ?>
+                    <div class="voice-card__text">
+                      <?php echo $content; ?>
+                    </div>
+                  <?php endif; ?>
                 </li>
             <?php endwhile;
             endif; ?>

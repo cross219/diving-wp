@@ -13,9 +13,7 @@
 
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
-
-
-
+  
   <section class="page-thanks lower-bg page-contact-layout">
     <div class="page-thanks__inner inner">
       <div class="page-thanks__body">

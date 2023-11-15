@@ -35,8 +35,6 @@
               </a>
             </li>
           <?php endforeach; ?>
-
-
         </ul>
         <!-- コンテンツ -->
         <div class="tab__wrapper ">
@@ -74,18 +72,17 @@
                       <?php endif; ?>
                     </div>
                   </div>
-                  <div class="voice-card__text">
-                    <?php $text = get_field('content');
-                    if ($text) {
-                      echo $text;
-                    } ?>
-                  </div>
+                  <?php $text = get_field('content');
+                  if ($text) : ?>
+                    <div class="voice-card__text">
+                      <?php echo $text; ?>
+                    </div>
+                  <?php endif; ?>
                 </li>
             <?php endwhile;
             endif; ?>
           </ul>
         </div>
-
         <div class="archive-voice__pagenavi">
           <?php wp_pagenavi(); ?>
         </div>

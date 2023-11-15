@@ -12,6 +12,7 @@
   </div>
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
+  
   <section class="lower-campaign lower-bg lower-campaign-layout">
     <div class="lower-campaign__inner inner">
       <div class="lower-campaign__tab tab">
@@ -65,29 +66,35 @@
                       <p class="price-card__text">全部コミコミ(お一人様)</p>
                       <div class="price-card__price-box">
                         <div class="price-card__price">
-                          <span class="price-card__price--redline"><?php $text = get_field('redline');
-                                                                    if ($text) {
-                                                                      echo $text;
-                                                                    } ?></span>
+                          <?php $redline = get_field('redline');
+                          if ($redline) : ?>
+                            <span class="price-card__price--redline">
+                              <?php echo $redline; ?>
+                            </span>
+                          <?php endif; ?>
                         </div>
-                        <div class="price-card__discount"><?php $text = get_field('discount');
-                                                          if ($text) {
-                                                            echo $text;
-                                                          } ?></div>
+                        <?php $discount = get_field('discount');
+                        if ($discount) : ?>
+                          <div class="price-card__discount">
+                            <?php echo $discount; ?>
+                          </div>
+                        <?php endif; ?>
                       </div>
                     </div>
                     <div class="price-card__pc u-desktop">
-                      <p class="price-card__description">
-                        <?php $text = get_field('description');
-                        if ($text) {
-                          echo $text;
-                        } ?>
-                      </p>
+                      <?php $text = get_field('description');
+                      if ($text) : ?>
+                        <p class="price-card__description">
+                          <?php echo $text; ?>
+                        </p>
+                      <?php endif; ?>
                       <div class="price-card__link-items">
-                        <p class="price-card__period"><?php $text = get_field('campaign-period');
-                                                      if ($text) {
-                                                        echo $text;
-                                                      } ?></p>
+                        <?php $text = get_field('campaign-period');
+                        if ($text) : ?>
+                          <p class="price-card__period">
+                            <?php echo $text; ?>
+                          </p>
+                        <?php endif; ?>
                         <p class="price-card__contact">
                           ご予約・お問い合わせはコチラ
                         </p>

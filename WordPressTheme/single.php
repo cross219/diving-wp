@@ -41,21 +41,18 @@
                 <div class="page-link__inner">
                   <div class="page-link__flex">
                     <?php
-                    $prev = get_previous_post();
-                    if (!empty($prev)) {
-                      $prev_url = esc_url(get_permalink($prev->ID));
-                    }
-                    $next = get_next_post();
-                    if (!empty($next)) {
-                      $next_url = esc_url(get_permalink($next->ID));
-                    }
+                    $prev_post = get_previous_post();
+                    $next_post = get_next_post();
+
+                    $prev_url = !empty($prev_post) ? esc_url(get_permalink($prev_post->ID)) : '';
+                    $next_url = !empty($next_post) ? esc_url(get_permalink($next_post->ID)) : '';
                     ?>
-                    <?php if (!empty($prev)) : ?>
+                    <?php if (!empty($prev_post)) : ?>
                       <div class="page-link__prev">
                         <a href="<?php echo $prev_url; ?>"></a>
                       </div>
                     <?php endif; ?>
-                    <?php if (!empty($next)) : ?>
+                    <?php if (!empty($next_post)) : ?>
                       <div class="page-link__next">
                         <a href="<?php echo $next_url; ?>"></a>
                       </div>
@@ -66,7 +63,6 @@
             </div>
         <?php endwhile;
         endif; ?>
-
         <div class="lower-blog__aside">
           <?php get_sidebar(); ?>
         </div>

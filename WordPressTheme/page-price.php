@@ -10,7 +10,6 @@
       <h2 class="sub-mv__title">Price</h2>
     </div>
   </div>
-
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
 
@@ -36,7 +35,6 @@
             </dl>
           </li>
         <?php endif; ?>
-
         <?php
         $priceTable2 = SCF::get('price-table2');
         if ($priceTable2) : ?>
@@ -56,7 +54,6 @@
             </dl>
           </li>
         <?php endif; ?>
-
         <?php
         $priceTable3 = SCF::get('price-table3');
         if ($priceTable3) : ?>
@@ -76,7 +73,6 @@
             </dl>
           </li>
         <?php endif; ?>
-
         <?php
         $priceTable4 = SCF::get('price-table4');
         if ($priceTable4) : ?>

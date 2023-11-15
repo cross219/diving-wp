@@ -10,10 +10,8 @@
       <h2 class="sub-mv__title">About us</h2>
     </div>
   </div>
-
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
-
 
   <section class="lower-about lower-bg lower-bg--about lower-about-layout">
     <div class="lower-about__inner inner">
@@ -55,23 +53,19 @@
             <ul class="gallery__items">
               <?php
               $imgGroup = SCF::get('gallery_list');
-              foreach ($imgGroup as $fields) {
+              foreach ($imgGroup as $fields) :
                 $imgurl = wp_get_attachment_image_src($fields['gallery_item'], 'full');
               ?>
                 <li class="gallery__item js-modal">
-                  <!-- 画像がない時はnoImg画像を表示 -->
-                  <?php if ($fields['gallery_item'] === "") { ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/noImage.jpg">
-                    <!-- それ以外（画像がある時）画像を表示 -->
-                  <?php } else { ?>
-                    <img src="<?php echo $imgurl[0]; ?>" alt="ギャラリーの
-                    写真">
-                  <?php
-                  }
-                  ?>
+                  <?php if (empty($fields['gallery_item'])) : ?>
+                    <!-- 画像がない時はnoImg画像を表示 -->
+                    <img src="<?php echo get_template_directory_uri(); ?>/img/noImage.jpg" alt="No Image">
+                  <?php else : ?>
+                    <!-- 画像がある時は画像を表示 -->
+                    <img src="<?php echo esc_url($imgurl[0]); ?>" alt="ギャラリーの写真">
+                  <?php endif; ?>
                 </li>
-              <?php } ?>
-              </li>
+              <?php endforeach; ?>
             </ul>
           </div>
           <div class="gallery__modal">

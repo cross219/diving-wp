@@ -18,7 +18,6 @@
       <div class="lower-blog__contents">
         <div class="lower-blog__content">
           <div class="lower-blog__items blog-cards blog-cards--lower">
-
             <?php if (have_posts()) :
               while (have_posts()) :
                 the_post(); ?>
@@ -42,17 +41,14 @@
                 </a>
             <?php endwhile;
             endif; ?>
-
           </div>
           <div class="lower-blog__pagenavi">
             <?php wp_pagenavi(); ?>
           </div>
-
         </div>
         <div class="lower-blog__aside">
           <?php get_sidebar(); ?>
         </div>
-
       </div>
     </div>
   </section>

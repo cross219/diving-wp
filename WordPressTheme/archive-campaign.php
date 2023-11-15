@@ -1,9 +1,6 @@
 <?php get_header(); ?>
 
-<?php
-$contact = esc_url(home_url('/contact/'));
-?>
-
+<?php $contact = esc_url(home_url('/contact/')); ?>
 <main>
   <!-- 下層ページのメインビュー -->
   <div class="sub-mv">
@@ -64,30 +61,34 @@ $contact = esc_url(home_url('/contact/'));
                     <div class="price-card__prices price-card__prices--lower">
                       <p class="price-card__text">全部コミコミ(お一人様)</p>
                       <div class="price-card__price-box">
-                        <div class="price-card__price">
-                          <span class="price-card__price--redline"><?php $redline = get_field('redline');
-                                                                    if ($redline) {
-                                                                      echo $redline;
-                                                                    } ?></span>
-                        </div>
-                        <div class="price-card__discount"><?php $discount = get_field('discount');
-                                                          if ($discount) {
-                                                            echo $discount;
-                                                          } ?></div>
+                        <?php $redline = get_field('redline');
+                        if ($redline) : ?>
+                          <div class="price-card__price">
+                            <span class="price-card__price--redline"><?php echo $redline; ?></span>
+                          </div>
+                        <?php endif; ?>
+                        <?php $discount = get_field('discount');
+                        if ($discount) : ?>
+                          <div class="price-card__discount">
+                            <?php echo $discount; ?>
+                          </div>
+                        <?php endif; ?>
                       </div>
                     </div>
                     <div class="price-card__pc u-desktop">
-                      <p class="price-card__description">
-                        <?php $description = get_field('description');
-                        if ($description) {
-                          echo $description;
-                        } ?>
-                      </p>
+                      <?php $description = get_field('description');
+                      if ($description) : ?>
+                        <p class="price-card__description">
+                          <?php echo $description; ?>
+                        </p>
+                      <?php endif; ?>
                       <div class="price-card__link-items">
-                        <p class="price-card__period"><?php $period = get_field('campaign-period');
-                                                      if ($period) {
-                                                        echo $period;
-                                                      } ?></p>
+                        <?php $period = get_field('campaign-period');
+                        if ($period) : ?>
+                          <p class="price-card__period">
+                            <?php echo $period; ?>
+                          </p>
+                        <?php endif; ?>
                         <p class="price-card__contact">
                           ご予約・お問い合わせはコチラ
                         </p>

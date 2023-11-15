@@ -10,10 +10,8 @@
       <h2 class="sub-mv__title">Terms of Service</h2>
     </div>
   </div>
-
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
-
 
   <section class="page-terms lower-bg page-terms-layout">
     <div class="page-terms__inner inner">
