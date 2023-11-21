@@ -445,7 +445,8 @@ a {
 	margin-top: 1.25rem;
 }
 
-.aside-voice__age {
+.aside-voice__meta {
+	display: flex;
 	font-size: 0.75rem;
 	font-weight: 400;
 	margin-top: 1rem;
@@ -2684,6 +2685,11 @@ textarea {
 }
 
 .voice-card__age {
+	font-size: 0.75rem;
+	line-height: 1;
+}
+
+.voice-card__attribute {
 	font-size: 0.75rem;
 	line-height: 1;
 }

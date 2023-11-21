@@ -13,10 +13,11 @@
 .aside-voice__item {
 }
 
-.aside-voice__age {
+.aside-voice__meta {
   margin-top: rem(16);
   font-size: rem(12);
   font-weight: 400;
+  display: flex;
 }
 
 .aside-voice__title {

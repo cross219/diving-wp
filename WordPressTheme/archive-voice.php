@@ -45,9 +45,9 @@
                         $voice_meta = get_field('voice-meta');
                         if ($voice_meta) :
                         ?>
-                          <div class="voice-card__age">
-                            <p><?php echo $voice_meta['voice-age'] ?></p>
-                            <p>(<?php echo $voice_meta['voice-attribute'] ?>)</p>
+                          <div class="voice-card__meta">
+                            <p class="voice-card__age"><?php echo $voice_meta['voice-age'] ?></p>
+                            <p class="voice-card__attribute">(<?php echo $voice_meta['voice-attribute'] ?>)</p>
                           </div>
                         <?php endif; ?>
                         <?php
@@ -70,7 +70,7 @@
                       <?php endif; ?>
                     </div>
                   </div>
-                  <?php $content = get_field('content');
+                  <?php $content = get_field('voice-content');
                   if ($content) : ?>
                     <div class="voice-card__text">
                       <?php echo $content; ?>

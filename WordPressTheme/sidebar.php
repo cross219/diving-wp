@@ -70,11 +70,14 @@ $contact = esc_url(home_url('/contact/'));
                 <?php else : ?>
                   <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/no-image.jpg" alt="no-mage">
                 <?php endif; ?>
-                <?php $age = get_field('age');
-                if ($age) : ?>
-                  <p class="aside-voice__age">
-                    <?php echo $age; ?>
-                  </p>
+                <?php
+                $voice_meta = get_field('voice-meta');
+                if ($voice_meta) :
+                ?>
+                  <div class="aside-voice__meta">
+                    <p class="aside-voice__age"><?php echo $voice_meta['voice-age'] ?></p>
+                    <p class="aside-voice__attribute">(<?php echo $voice_meta['voice-attribute'] ?>)</p>
+                  </div>
                 <?php endif; ?>
                 <h3 class="aside-voice__title"><?php the_title(); ?></h3>
               </div>
