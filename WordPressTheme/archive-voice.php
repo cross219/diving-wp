@@ -41,10 +41,13 @@
                   <div class="voice-card__upper">
                     <div class="voice-card__title-box">
                       <div class="voice-card__meta">
-                        <?php $age = get_field('age');
-                        if ($age) : ?>
+                        <?php
+                        $voice_meta = get_field('voice-meta');
+                        if ($voice_meta) :
+                        ?>
                           <div class="voice-card__age">
-                            <?php echo $age; ?>
+                            <p><?php echo $voice_meta['voice-age'] ?></p>
+                            <p>(<?php echo $voice_meta['voice-attribute'] ?>)</p>
                           </div>
                         <?php endif; ?>
                         <?php
