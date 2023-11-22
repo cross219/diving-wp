@@ -12,7 +12,7 @@
   </div>
   <!-- パンくず -->
   <?php get_template_part('parts/breadcrumb') ?>
-  
+
   <section class="lower-campaign lower-bg lower-campaign-layout">
     <div class="lower-campaign__inner inner">
       <div class="lower-campaign__tab tab">
@@ -65,34 +65,31 @@
                     <div class="price-card__prices price-card__prices--lower">
                       <p class="price-card__text">全部コミコミ(お一人様)</p>
                       <div class="price-card__price-box">
-                        <div class="price-card__price">
-                          <?php $redline = get_field('redline');
-                          if ($redline) : ?>
-                            <span class="price-card__price--redline">
-                              <?php echo $redline; ?>
-                            </span>
-                          <?php endif; ?>
-                        </div>
-                        <?php $discount = get_field('discount');
-                        if ($discount) : ?>
-                          <div class="price-card__discount">
-                            <?php echo $discount; ?>
-                          </div>
+                        <?php
+                        $campaign_price = get_field('campaign-price');
+                        if ($campaign_price) :
+                        ?>
+                          <p class="price-card__price">
+                            <span class="price-card__price--redline">¥<?php echo $campaign_price['campaign-regular'] ?></span>
+                          </p>
+                          <p class="price-card__discount">
+                            ¥<?php echo $campaign_price['campaign-discount']; ?>
+                          </p>
                         <?php endif; ?>
                       </div>
                     </div>
                     <div class="price-card__pc u-desktop">
-                      <?php $text = get_field('description');
-                      if ($text) : ?>
+                      <?php $campaign_content = get_field('campaign-content');
+                      if ($campaign_content) : ?>
                         <p class="price-card__description">
-                          <?php echo $text; ?>
+                          <?php echo $campaign_content; ?>
                         </p>
                       <?php endif; ?>
                       <div class="price-card__link-items">
-                        <?php $text = get_field('campaign-period');
-                        if ($text) : ?>
+                        <?php $campaign_period = get_field('campaign-period');
+                        if ($campaign_period) : ?>
                           <p class="price-card__period">
-                            <?php echo $text; ?>
+                            <?php echo $campaign_period['campaign-start']; ?>&nbsp;&#45;&nbsp;<?php echo $campaign_period['campaign-end'];; ?>
                           </p>
                         <?php endif; ?>
                         <p class="price-card__contact">

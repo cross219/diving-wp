@@ -2546,6 +2546,10 @@ textarea {
 	width: 100%;
 }
 
+.tab__button a {
+	display: block;
+}
+
 .tab__button:hover,
 .tab__button.current-cat {
 	background: #408f95;

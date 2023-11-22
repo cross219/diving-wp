@@ -37,7 +37,7 @@
           <?php endforeach; ?>
         </ul>
         <!-- コンテンツ -->
-        <div class="tab__wrapper ">
+        <div class="tab__wrapper">
           <ul class="voice-cards">
             <?php if (have_posts()) :
               while (have_posts()) :
@@ -45,11 +45,13 @@
                 <li class="vice-cards__item voice-card">
                   <div class="voice-card__upper">
                     <div class="voice-card__title-box">
-                      <div class="voice-card__meta">
-                        <?php $age = get_field('age');
-                        if ($age) : ?>
-                          <div class="voice-card__age">
-                            <?php echo $age ?>
+                      <div class="voice-card__meta-box">
+                        <?php
+                        $voice_meta = get_field('voice-meta');
+                        if ($voice_meta) :
+                        ?>
+                          <div class="voice-card__meta">
+                            <?php echo $voice_meta['voice-age']; ?>&#40;<?php echo $voice_meta['voice-attribute']; ?>&#41;
                           </div>
                         <?php endif; ?>
                         <?php
@@ -72,10 +74,10 @@
                       <?php endif; ?>
                     </div>
                   </div>
-                  <?php $text = get_field('content');
-                  if ($text) : ?>
+                  <?php $content = get_field('voice-content');
+                  if ($content) : ?>
                     <div class="voice-card__text">
-                      <?php echo $text; ?>
+                      <?php echo $content; ?>
                     </div>
                   <?php endif; ?>
                 </li>

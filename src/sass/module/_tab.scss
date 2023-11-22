@@ -17,7 +17,7 @@
   }
 }
 
-.tab__button {
+.tab__button  {
   max-width: rem(162);
   width: 100%;
   border: 1px solid $accent;
@@ -29,6 +29,11 @@
   color: $accent;
   background-color: $white;
 }
+
+.tab__button a {
+  display: block;
+}
+
 
 .tab__button:hover,
 .tab__button.current-cat {
