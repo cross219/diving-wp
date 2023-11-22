@@ -124,6 +124,14 @@ function my_pre_get_posts($query)
 		// カスタム投稿タイプ「news」の場合
 		$query->set('posts_per_page', 6);
 	}
+	// カスタムタクソノミー campaign_category
+	if ($query->is_tax('campaign_category')) {
+		$query->set('posts_per_page', 4);
+	}
+	// カスタムタクソノミー voice_category
+	if ($query->is_tax('voice_category')) {
+		$query->set('posts_per_page', 6);
+	}
 }
 add_action('pre_get_posts', 'my_pre_get_posts');
 

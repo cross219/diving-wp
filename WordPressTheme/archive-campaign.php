@@ -70,7 +70,7 @@
                           </p>
                           <p class="price-card__discount">
                             ¥<?php echo $campaign_price['campaign-discount']; ?>
-                        </p>
+                          </p>
                         <?php endif; ?>
                       </div>
                     </div>
