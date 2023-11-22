@@ -963,6 +963,73 @@ a {
 	white-space: nowrap;
 }
 
+.form-button {
+	background-color: #408f95;
+	color: #fff;
+	display: inline-block;
+	font-family: "Gotu", sans-serif;
+	font-size: 0.875rem;
+	font-weight: 400;
+	left: -0.1875rem;
+	line-height: 1.57;
+	position: relative;
+	z-index: 1;
+}
+
+.form-button::before {
+	border: 0.0625rem solid #408f95;
+	content: "";
+	height: 3.375rem;
+	left: 0.25rem;
+	pointer-events: none;
+	position: absolute;
+	top: 0.25rem;
+	width: 12.625rem;
+	z-index: -1;
+}
+
+.form-button::after {
+	background: #fff;
+	border: 0.0625rem solid #408f95;
+	content: "";
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	transform: scale(0, 1);
+	transform-origin: left top;
+	transition: 0.3s cubic-bezier(0.45, 0, 0.55, 1);
+	width: 100%;
+	z-index: -1;
+}
+
+.form-button__submit {
+	color: white;
+	padding-bottom: 1.25rem;
+	padding-left: 3.5rem;
+	padding-right: 7rem;
+	padding-top: 1.25rem;
+	text-transform: capitalize;
+	transition: color 0.3s;
+}
+
+.form-button span {
+	position: relative;
+}
+
+.form-button span::after {
+	background-image: url(../images/common/button-arrow_white.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	content: "";
+	height: 100%;
+	pointer-events: none;
+	position: absolute;
+	right: 3.4375rem;
+	top: 0.1875rem;
+	width: 2.5rem;
+}
+
 /*デフォルト色の指定*/
 
 /*サイズ等の指定*/
@@ -3272,6 +3339,18 @@ a:hover {
 .footer__copyright {
 	font-size: 0.875rem;
 	margin-top: 4.0625rem;
+}
+
+.form-button__submit:hover {
+	color: #408f95;
+}
+
+.form-button:hover::after {
+	transform: scale(1, 1);
+}
+
+.form-button:hover span::after {
+	background-image: url(../images/common/button-arrow_blue.png);
 }
 
 [type=text],

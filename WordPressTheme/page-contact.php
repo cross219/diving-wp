@@ -15,7 +15,7 @@
 
   <section class="page-contact lower-bg page-contact-layout">
     <div class="page-contact__inner inner">
-      <div class="page-contact__error js-error">
+      <div class="page-contact__error js-error ">
         <p>
           ※必須項目が入力されていません。<br class="u-mobile" />入力してください。
         </p>

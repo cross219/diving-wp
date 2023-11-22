@@ -25,15 +25,15 @@ $sitemap = esc_url(home_url('/sitemap/'));
         <!-- Swiper -->
         <div class="swiper js-fv-swiper">
           <div class="swiper-wrapper">
-          <?php 
+            <?php
             $mv_pc_img = get_field('mv-pc');
             $mv_sp_img = get_field('mv-sp');
             $mv_alt = get_field('mv-alt');
             for ($i = 1; $i <= 4; $i++) :
-              $sp_src = $mv_sp_img['mv-sp'.$i];
-              $pc_src = $mv_pc_img['mv-pc'.$i];
-              $alt = $mv_alt['mv-alt'.$i];
-              ?>
+              $sp_src = $mv_sp_img['mv-sp' . $i];
+              $pc_src = $mv_pc_img['mv-pc' . $i];
+              $alt = $mv_alt['mv-alt' . $i];
+            ?>
               <div class="swiper-slide">
                 <picture class="fv__img">
                   <source srcset="<?php echo $sp_src; ?>" media="(max-width: 768px)" />

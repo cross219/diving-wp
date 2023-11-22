@@ -180,7 +180,7 @@ jQuery(function ($) {
     // エラーメッセージを表示する要素を取得
     const errorElement = $(".js-error");
     // 送信ボタンを取得
-    const submitButton = $("#submit-button");
+    // const submitButton = $("#submit-button");
     // フォーム送信時の処理を設定
     $("#form").on("submit", function (e) {
       let hasError = false;
@@ -195,17 +195,17 @@ jQuery(function ($) {
         }
       });
       // エラーがある場合はフォーム送信をキャンセル
-      if (hasError) {
-        e.preventDefault();
-        // エラーがある場合、フォームの上部までスクロール
-        $("body,html").animate(
-          {
-            scrollTop: 0,
-          },
-          500,
-          "swing"
-        );
-      }
+      // if (hasError) {
+      //   e.preventDefault();
+      //   // エラーがある場合、フォームの上部までスクロール
+      //   $("body,html").animate(
+      //     {
+      //       scrollTop: 0,
+      //     },
+      //     500,
+      //     "swing"
+      //   );
+      // }
     });
     // 入力要素にフォーカスがあたったときの処理を設定
     requiredInputs.on("blur", function () {
@@ -228,4 +228,40 @@ jQuery(function ($) {
       }
     });
   });
+  //   $(document).ready(function() {
+  //     var required = $('.wpcf7-validates-as-required');
+  //     var requiredArray = {};
+  //     var submit = $('.wpcf7-submit');
+  //     var attention = $('.wpcf7-required-attention');
+
+  //     if (required.length > 0) {
+  //         submit.prop('disabled', true);
+  //         attention.addClass('active');
+
+  //         required.each(function(index, el) {
+  //             if ($(el).val() === '') {
+  //                 requiredArray[$(el).attr('name')] = false;
+  //                 $(el).addClass('missing-input'); // 追加: 不足している入力にクラスを追加
+  //             }
+
+  //             $(el).on('input', function() {
+  //                 if ($(el).val() === '') {
+  //                     requiredArray[$(el).attr('name')] = false;
+  //                     $(el).addClass('missing-input'); // 追加: 不足している入力にクラスを追加
+  //                 } else if (requiredArray[$(el).attr('name')] === false) {
+  //                     delete requiredArray[$(el).attr('name')];
+  //                     $(el).removeClass('missing-input'); // 追加: 入力がある場合はクラスを削除
+  //                 }
+
+  //                 if ($.isEmptyObject(requiredArray)) {
+  //                     submit.prop('disabled', false);
+  //                     attention.removeClass('active');
+  //                 } else {
+  //                     submit.prop('disabled', true);
+  //                     attention.addClass('active');
+  //                 }
+  //             });
+  //         });
+  //     }
+  // });
 });

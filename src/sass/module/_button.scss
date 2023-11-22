@@ -27,7 +27,6 @@
   background-color: $white;
 }
 
-
 .button::before {
   position: absolute;
   bottom: rem(-5);
@@ -41,7 +40,6 @@
 
 .button--accent::before {
   border: 1px solid $white;
-
 }
 
 .button::after {
@@ -76,8 +74,6 @@
   transform: scale(1, 1);
 }
 
-
-
 .button__arrow {
   position: absolute;
   top: rem(27);
@@ -90,7 +86,6 @@
 
 .button__arrow--accent {
   background: $accent;
-
 }
 
 .button:hover .button__arrow {
@@ -112,4 +107,3 @@
   transform: rotate(45deg);
   background: inherit;
 }
-
