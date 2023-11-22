@@ -25,30 +25,22 @@ $sitemap = esc_url(home_url('/sitemap/'));
         <!-- Swiper -->
         <div class="swiper js-fv-swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <picture class="fv__img">
-                <source srcset="<?php the_field('mv-sp1'); ?>" media="(max-width: 768px)" />
-                <img src="<?php the_field('mv-pc1'); ?>" alt="" />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture class="fv__img">
-                <source srcset="<?php the_field('mv-sp2'); ?>" media="(max-width: 768px)" />
-                <img src="<?php the_field('mv-pc2'); ?>" alt="" />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture class="fv__img">
-                <source srcset="<?php the_field('mv-sp3'); ?>" media="(max-width: 768px)" />
-                <img src="<?php the_field('mv-pc3'); ?>" alt="" />
-              </picture>
-            </div>
-            <div class="swiper-slide">
-              <picture class="fv__img">
-                <source srcset="<?php the_field('mv-sp4'); ?>" media="(max-width: 768px)" />
-                <img src="<?php the_field('mv-pc4'); ?>" alt="" />
-              </picture>
-            </div>
+          <?php 
+            $mv_pc_img = get_field('mv-pc');
+            $mv_sp_img = get_field('mv-sp');
+            $mv_alt = get_field('mv-alt');
+            for ($i = 1; $i <= 4; $i++) :
+              $sp_src = $mv_sp_img['mv-sp'.$i];
+              $pc_src = $mv_pc_img['mv-pc'.$i];
+              $alt = $mv_alt['mv-alt'.$i];
+              ?>
+              <div class="swiper-slide">
+                <picture class="fv__img">
+                  <source srcset="<?php echo $sp_src; ?>" media="(max-width: 768px)" />
+                  <img src="<?php echo $pc_src; ?>" alt="<?php echo $alt; ?>" />
+                </picture>
+              </div>
+            <?php endfor; ?>
           </div>
         </div>
         <div class="fv__title-box">
@@ -94,18 +86,17 @@ $sitemap = esc_url(home_url('/sitemap/'));
                   <div class="price-card__prices">
                     <p class="price-card__text">全部コミコミ(お一人様)</p>
                     <div class="price-card__price-box">
-                      <div class="price-card__price">
-                        <?php $redline = get_field('redline');
-                        if ($redline) : ?>
-                          <span class="price-card__price--redline"><?php echo $redline; ?></span>
-                      </div>
-                    <?php endif; ?>
-                    <?php $discount = get_field('discount');
-                    if ($discount) : ?>
-                      <div class="price-card__discount">
-                        <?php echo $discount; ?>
-                      </div>
-                    <?php endif; ?>
+                      <?php
+                      $campaign_price = get_field('campaign-price');
+                      if ($campaign_price) :
+                      ?>
+                        <p class="price-card__price">
+                          <span class="price-card__price--redline">¥<?php echo $campaign_price['campaign-regular'] ?></span>
+                        </p>
+                        <p class="price-card__discount">
+                          ¥<?php echo $campaign_price['campaign-discount']; ?>
+                        </p>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>
@@ -246,11 +237,13 @@ $sitemap = esc_url(home_url('/sitemap/'));
             <div class="voice-cards__item voice-card">
               <div class="voice-card__upper">
                 <div class="voice-card__title-box">
-                  <div class="voice-card__meta">
-                    <?php $age = get_field('age');
-                    if ($age) : ?>
-                      <div class="voice-card__age">
-                        <?php echo $age; ?>
+                  <div class="voice-card__meta-box">
+                    <?php
+                    $voice_meta = get_field('voice-meta');
+                    if ($voice_meta) :
+                    ?>
+                      <div class="voice-card__meta">
+                        <?php echo $voice_meta['voice-age']; ?>&#40;<?php echo $voice_meta['voice-attribute']; ?>&#41;
                       </div>
                     <?php endif; ?>
                     <?php
@@ -273,7 +266,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
               </div>
               <p class="voice-card__text">
                 <?php
-                $voice_text = get_field('content');
+                $voice_text = get_field('voice-content');
                 if (mb_strlen($voice_text, 'UTF-8') > 200) {
                   $voice_text = mb_substr($voice_text, 0, 200, 'UTF-8');
                   echo $voice_text . '…';
@@ -322,59 +315,59 @@ $sitemap = esc_url(home_url('/sitemap/'));
                 <?php endforeach; ?>
               </dl>
             </div>
-            <?php endif; ?>
-            <?php
-            $priceTable2 = SCF::get_option_meta('price-options', 'price-experience');
-            if ($priceTable2) : ?>
-              <div class="price__content price-table">
-                <h3 class="price-table__heading">体験ダイビング</h3>
-                <dl class="price-table__content">
-                  <?php
-                  foreach ($priceTable2 as $priceItem2) :
-                    $course2 = esc_html($priceItem2['course2']);
-                    $price2 = esc_html($priceItem2['price2']);
-                  ?>
-                    <dt class="price-table__course">
-                      <?php echo $course2; ?>
-                    </dt>
-                    <dd class="price-table__price"><?php echo $price2; ?></dd>
-                  <?php endforeach; ?>
-                </dl>
-              </div>
-            <?php endif; ?>
-            <?php
-            $priceTable3 = SCF::get_option_meta('price-options', 'price-fun');
-            if ($priceTable3) : ?>
-              <div class="price__content price-table">
-                <h3 class="price-table__heading">ファンダイビング</h3>
-                <dl class="price-table__content">
-                  <?php foreach ($priceTable3 as $priceItem3) :
-                    $course3 = esc_html($priceItem3['course3']);
-                    $price3 = esc_html($priceItem3['price3']);
-                  ?>
-                    <dt class="price-table__course"><?php echo $course3; ?></dt>
-                    <dd class="price-table__price"><?php echo $price3; ?></dd>
-                  <?php endforeach;
-                  ?>
-                </dl>
-              </div>
-            <?php endif; ?>
-            <?php
-            $priceTable4 = SCF::get_option_meta('price-options', 'price-special');
-            if ($priceTable4) : ?>
-              <div class="price__content price-table">
-                <h3 class="price-table__heading">スペシャルダイビング</h3>
-                <dl class="price-table__content">
-                  <?php foreach ($priceTable4 as $priceItem4) :
-                    $course4 = esc_html($priceItem4['course4']);
-                    $price4 = esc_html($priceItem4['price4']);
-                  ?>
-                    <dt class="price-table__course"><?php echo $course4; ?></dt>
-                    <dd class="price-table__price"><?php echo $price4; ?></dd>
-                  <?php endforeach; ?>
-                </dl>
-              </div>
-            <?php endif; ?>
+          <?php endif; ?>
+          <?php
+          $priceTable2 = SCF::get_option_meta('price-options', 'price-experience');
+          if ($priceTable2) : ?>
+            <div class="price__content price-table">
+              <h3 class="price-table__heading">体験ダイビング</h3>
+              <dl class="price-table__content">
+                <?php
+                foreach ($priceTable2 as $priceItem2) :
+                  $course2 = esc_html($priceItem2['course2']);
+                  $price2 = esc_html($priceItem2['price2']);
+                ?>
+                  <dt class="price-table__course">
+                    <?php echo $course2; ?>
+                  </dt>
+                  <dd class="price-table__price"><?php echo $price2; ?></dd>
+                <?php endforeach; ?>
+              </dl>
+            </div>
+          <?php endif; ?>
+          <?php
+          $priceTable3 = SCF::get_option_meta('price-options', 'price-fun');
+          if ($priceTable3) : ?>
+            <div class="price__content price-table">
+              <h3 class="price-table__heading">ファンダイビング</h3>
+              <dl class="price-table__content">
+                <?php foreach ($priceTable3 as $priceItem3) :
+                  $course3 = esc_html($priceItem3['course3']);
+                  $price3 = esc_html($priceItem3['price3']);
+                ?>
+                  <dt class="price-table__course"><?php echo $course3; ?></dt>
+                  <dd class="price-table__price"><?php echo $price3; ?></dd>
+                <?php endforeach;
+                ?>
+              </dl>
+            </div>
+          <?php endif; ?>
+          <?php
+          $priceTable4 = SCF::get_option_meta('price-options', 'price-special');
+          if ($priceTable4) : ?>
+            <div class="price__content price-table">
+              <h3 class="price-table__heading">スペシャルダイビング</h3>
+              <dl class="price-table__content">
+                <?php foreach ($priceTable4 as $priceItem4) :
+                  $course4 = esc_html($priceItem4['course4']);
+                  $price4 = esc_html($priceItem4['price4']);
+                ?>
+                  <dt class="price-table__course"><?php echo $course4; ?></dt>
+                  <dd class="price-table__price"><?php echo $price4; ?></dd>
+                <?php endforeach; ?>
+              </dl>
+            </div>
+          <?php endif; ?>
         </div>
         <div class="price__pc-img u-desktop animate-img js-colorbox">
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/price_pc.jpg" alt="" />

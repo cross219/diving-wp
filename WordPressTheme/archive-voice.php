@@ -40,14 +40,13 @@
                 <li class="vice-cards__item voice-card">
                   <div class="voice-card__upper">
                     <div class="voice-card__title-box">
-                      <div class="voice-card__meta">
+                      <div class="voice-card__meta-box">
                         <?php
                         $voice_meta = get_field('voice-meta');
                         if ($voice_meta) :
                         ?>
                           <div class="voice-card__meta">
-                            <p class="voice-card__age"><?php echo $voice_meta['voice-age'] ?></p>
-                            <p class="voice-card__attribute">(<?php echo $voice_meta['voice-attribute'] ?>)</p>
+                          <?php echo $voice_meta['voice-age']; ?>&#40;<?php echo $voice_meta['voice-attribute']; ?>&#41;
                           </div>
                         <?php endif; ?>
                         <?php

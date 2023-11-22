@@ -75,8 +75,7 @@ $contact = esc_url(home_url('/contact/'));
                 if ($voice_meta) :
                 ?>
                   <div class="aside-voice__meta">
-                    <p class="aside-voice__age"><?php echo $voice_meta['voice-age'] ?></p>
-                    <p class="aside-voice__attribute">(<?php echo $voice_meta['voice-attribute'] ?>)</p>
+                    <?php echo $voice_meta['voice-age']; ?>&#40;<?php echo $voice_meta['voice-attribute']; ?>&#41;
                   </div>
                 <?php endif; ?>
                 <h3 class="aside-voice__title"><?php the_title(); ?></h3>
@@ -126,19 +125,18 @@ $contact = esc_url(home_url('/contact/'));
                   <p class="price-card__text price-card__text--blog">全部コミコミ(お一人様)</p>
                   <div class="price-card__price-box price-card__price-box--blog">
                     <div class="price-card__price price-card__price--blog">
-                      <?php $redline = get_field('redline');
-                      if ($redline) : ?>
+                      <?php
+                      $campaign_price = get_field('campaign-price');
+                      if ($campaign_price) :
+                      ?>
                         <span class="price-card__price--redline">
-                          <?php echo $redline; ?>
+                          ¥<?php echo $campaign_price['campaign-regular']; ?>
                         </span>
-                      <?php endif; ?>
                     </div>
-                    <?php $discount = get_field('discount');
-                    if ($discount) : ?>
-                      <div class="price-card__discount price-card__discount--blog">
-                        <?php echo $discount; ?>
-                      </div>
-                    <?php endif; ?>
+                    <div class="price-card__discount price-card__discount--blog">
+                      ¥<?php echo $campaign_price['campaign-discount']; ?>
+                    </div>
+                  <?php endif; ?>
                   </div>
                 </div>
               </div>

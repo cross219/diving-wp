@@ -25,12 +25,25 @@
   }
 }
 
+.voice-card__meta-box {
+  // display: flex;
+  display: flex;
+  flex-direction: column;
+  @include mq(md) {
+    // justify-content: space-between;
+    // align-items: flex-end;
+    justify-content: space-between;
+    // align-items: flex-end;
+    flex-direction: row;
+  }
+}
 .voice-card__meta {
   // display: flex;
+  display: flex;
+  justify-content: start;
   @include mq(md) {
     justify-content: space-between;
     align-items: flex-end;
-    display: flex;
   }
 }
 
@@ -50,7 +63,8 @@
 }
 
 .voice-card__category {
-  margin-left: auto;
+  // margin-left: auto;
+  margin-right: auto;
   margin-top: rem(3);
   display: inline-block;
   color: $accent;
@@ -60,6 +74,7 @@
   border: rem(1) solid $accent;
   @include mq(md) {
     margin-top: initial;
+    margin-right: initial;
     padding: rem(11) rem(17);
   }
 }

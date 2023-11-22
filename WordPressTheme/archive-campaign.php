@@ -61,32 +61,31 @@
                     <div class="price-card__prices price-card__prices--lower">
                       <p class="price-card__text">全部コミコミ(お一人様)</p>
                       <div class="price-card__price-box">
-                        <?php $redline = get_field('redline');
-                        if ($redline) : ?>
-                          <div class="price-card__price">
-                            <span class="price-card__price--redline"><?php echo $redline; ?></span>
-                          </div>
-                        <?php endif; ?>
-                        <?php $discount = get_field('discount');
-                        if ($discount) : ?>
-                          <div class="price-card__discount">
-                            <?php echo $discount; ?>
-                          </div>
+                        <?php
+                        $campaign_price = get_field('campaign-price');
+                        if ($campaign_price) :
+                        ?>
+                          <p class="price-card__price">
+                            <span class="price-card__price--redline">¥<?php echo $campaign_price['campaign-regular'] ?></span>
+                          </p>
+                          <p class="price-card__discount">
+                            ¥<?php echo $campaign_price['campaign-discount']; ?>
+                        </p>
                         <?php endif; ?>
                       </div>
                     </div>
                     <div class="price-card__pc u-desktop">
-                      <?php $description = get_field('description');
-                      if ($description) : ?>
+                      <?php $campaign_content = get_field('campaign-content');
+                      if ($campaign_content) : ?>
                         <p class="price-card__description">
-                          <?php echo $description; ?>
+                          <?php echo $campaign_content; ?>
                         </p>
                       <?php endif; ?>
                       <div class="price-card__link-items">
-                        <?php $period = get_field('campaign-period');
-                        if ($period) : ?>
+                        <?php $campaign_period = get_field('campaign-period');
+                        if ($campaign_period) : ?>
                           <p class="price-card__period">
-                            <?php echo $period; ?>
+                            <?php echo $campaign_period['campaign-start']; ?>&nbsp;&#45;&nbsp;<?php echo $campaign_period['campaign-end'];; ?>
                           </p>
                         <?php endif; ?>
                         <p class="price-card__contact">

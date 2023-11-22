@@ -2684,6 +2684,16 @@ textarea {
 	grid-template-columns: repeat(2, 1fr);
 }
 
+.voice-card__meta-box {
+	display: flex;
+	flex-direction: column;
+}
+
+.voice-card__meta {
+	display: flex;
+	justify-content: start;
+}
+
 .voice-card__age {
 	font-size: 0.75rem;
 	line-height: 1;
@@ -2700,7 +2710,7 @@ textarea {
 	display: inline-block;
 	font-size: 0.75rem;
 	line-height: 1;
-	margin-left: auto;
+	margin-right: auto;
 	margin-top: 0.1875rem;
 	padding: 0.5rem 0.75rem;
 }
@@ -4010,13 +4020,19 @@ select {
 	grid-template-columns: 1fr 11.25rem;
 }
 
+.voice-card__meta-box {
+	flex-direction: row;
+	justify-content: space-between;
+}
+
 .voice-card__meta {
 	align-items: flex-end;
-	display: flex;
 	justify-content: space-between;
 }
 
 .voice-card__category {
+	margin-right: 0;
+	margin-right: initial;
 	margin-top: 0;
 	margin-top: initial;
 	padding: 0.6875rem 1.0625rem;
