@@ -88,6 +88,12 @@ textarea.error {
   color: $white;
 }
 
+.wpcf7-not-valid {
+    background: rgba(201, 72, 0, 0.2);
+  border: 0.0625rem solid #c94800;
+  color: $white;
+}
+
 ::placeholder {
   font-size: rem(16);
   color: #ddf0f1;

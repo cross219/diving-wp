@@ -185,34 +185,7 @@ jQuery(function ($) {
     var requiredInputs = $(".required");
     // エラーメッセージを表示する要素を取得
     var errorElement = $(".js-error");
-    // 送信ボタンを取得
-    // const submitButton = $("#submit-button");
-    // フォーム送信時の処理を設定
-    $("#form").on("submit", function (e) {
-      var hasError = false;
-      // 必須項目の入力が空かどうかをチェック
-      requiredInputs.each(function () {
-        if ($(this).val().trim() === "") {
-          $(this).addClass("error");
-          errorElement.css("display", "block");
-          hasError = true;
-        } else {
-          $(this).removeClass("error");
-        }
-      });
-      // エラーがある場合はフォーム送信をキャンセル
-      // if (hasError) {
-      //   e.preventDefault();
-      //   // エラーがある場合、フォームの上部までスクロール
-      //   $("body,html").animate(
-      //     {
-      //       scrollTop: 0,
-      //     },
-      //     500,
-      //     "swing"
-      //   );
-      // }
-    });
+
     // 入力要素にフォーカスがあたったときの処理を設定
     requiredInputs.on("blur", function () {
       // 未入力の場合、.error クラスを追加
@@ -225,49 +198,5 @@ jQuery(function ($) {
         errorElement.css("display", "none"); // エラーメッセージを非表示
       }
     });
-    // .js-submit-checkの変更時に送信ボタンのdisabled属性を制御
-    $(".js-submit-check").on("change", function () {
-      if ($(this).is(":checked")) {
-        $('#form input[type="submit"]').prop("disabled", false); // チェックが入ったらdisabledを解除
-      } else {
-        $('#form input[type="submit"]').prop("disabled", true); // チェックが外れたらdisabledを設定
-      }
-    });
   });
-  //   $(document).ready(function() {
-  //     var required = $('.wpcf7-validates-as-required');
-  //     var requiredArray = {};
-  //     var submit = $('.wpcf7-submit');
-  //     var attention = $('.wpcf7-required-attention');
-
-  //     if (required.length > 0) {
-  //         submit.prop('disabled', true);
-  //         attention.addClass('active');
-
-  //         required.each(function(index, el) {
-  //             if ($(el).val() === '') {
-  //                 requiredArray[$(el).attr('name')] = false;
-  //                 $(el).addClass('missing-input'); // 追加: 不足している入力にクラスを追加
-  //             }
-
-  //             $(el).on('input', function() {
-  //                 if ($(el).val() === '') {
-  //                     requiredArray[$(el).attr('name')] = false;
-  //                     $(el).addClass('missing-input'); // 追加: 不足している入力にクラスを追加
-  //                 } else if (requiredArray[$(el).attr('name')] === false) {
-  //                     delete requiredArray[$(el).attr('name')];
-  //                     $(el).removeClass('missing-input'); // 追加: 入力がある場合はクラスを削除
-  //                 }
-
-  //                 if ($.isEmptyObject(requiredArray)) {
-  //                     submit.prop('disabled', false);
-  //                     attention.removeClass('active');
-  //                 } else {
-  //                     submit.prop('disabled', true);
-  //                     attention.addClass('active');
-  //                 }
-  //             });
-  //         });
-  //     }
-  // });
 });

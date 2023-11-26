@@ -1077,6 +1077,12 @@ textarea.error {
 	color: #fff;
 }
 
+.wpcf7-not-valid {
+	background: rgba(201, 72, 0, 0.2);
+	border: 0.0625rem solid #c94800;
+	color: #fff;
+}
+
 ::-moz-placeholder {
 	color: #ddf0f1;
 	font-size: 1rem;
