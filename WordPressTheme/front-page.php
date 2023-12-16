@@ -23,7 +23,7 @@ $sitemap = esc_url(home_url('/sitemap/'));
     <div class="fv__inner">
       <div class="fv__images">
         <!-- Swiper -->
-        <div class="swiper js-fv-swiper">
+        <!-- <div class="swiper js-fv-swiper">
           <div class="swiper-wrapper">
             <?php
             $mv_pc_img = get_field('mv-pc');
@@ -41,6 +41,31 @@ $sitemap = esc_url(home_url('/sitemap/'));
                 </picture>
               </div>
             <?php endfor; ?>
+          </div>
+        </div> -->
+        <div class="swiper js-fv-swiper">
+          <div class="swiper-wrapper">
+            <?php
+            $mv_pc_img = get_field('mv-pc');
+            $mv_sp_img = get_field('mv-sp');
+            $mv_alt = get_field('mv-alt');
+            $count = min(count($mv_pc_img), count($mv_sp_img), count($mv_alt));
+            for ($i = 1; $i <= $count; $i++) :
+              $sp_src = $mv_sp_img['mv-sp' . $i];
+              $pc_src = $mv_pc_img['mv-pc' . $i];
+              $alt = $mv_alt['mv-alt' . $i];
+              if ($sp_src && $pc_src) :
+            ?>
+                <div class="swiper-slide">
+                  <picture class="fv__img">
+                    <source srcset="<?php echo $sp_src; ?>" media="(max-width: 768px)" />
+                    <img src="<?php echo $pc_src; ?>" alt="<?php echo $alt; ?>" />
+                  </picture>
+                </div>
+            <?php
+              endif;
+            endfor;
+            ?>
           </div>
         </div>
         <div class="fv__title-box">

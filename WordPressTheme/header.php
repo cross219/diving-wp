@@ -10,7 +10,7 @@
 
 <?php
 $home = esc_url(home_url('/'));
-$campaign = esc_url(home_url('/campaign'));
+$campaign = esc_url(home_url('/campaign/'));
 $license = esc_url(home_url('/campaign_category/license/'));
 $experience = esc_url(home_url('/campaign_category/experience/'));
 $diving = esc_url(home_url('/campaign_category/diving/'));

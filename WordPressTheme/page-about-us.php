@@ -43,39 +43,55 @@
           ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。
         </p>
       </div>
-      <div class="lower-about__gallery gallery">
-        <div class="gallery__inner">
-          <div class="about__title section-title">
-            <h2 class="section-title__en">Gallery</h2>
-            <p class="section-title__ja">フォト</p>
+
+      <?php
+      $imgGroup = SCF::get_option_meta('gallery-options', 'gallery_list');
+      if (!empty($imgGroup)) : // ギャラリーアイテムが存在する場合のみ以下を実行
+        $hasGalleryItem = false;
+        foreach ($imgGroup as $fields) :
+          if (!empty($fields['gallery_item'])) : // ギャラリーアイテムが存在する場合のみ以下を実行
+            $hasGalleryItem = true;
+            break;
+          endif;
+        endforeach;
+
+        if ($hasGalleryItem) :
+      ?>
+          <div class="lower-about__gallery gallery">
+            <div class="gallery__inner">
+              <div class="about__title section-title">
+                <h2 class="section-title__en">Gallery</h2>
+                <p class="section-title__ja">フォト</p>
+              </div>
+              <div class="gallery__container">
+                <ul class="gallery__items">
+                  <?php
+                  foreach ($imgGroup as $fields) :
+                    $image_url = wp_get_attachment_image_src($fields['gallery_item'], 'full');
+                    if (!empty($fields['gallery_item'])) : // ギャラリーアイテムが存在する場合のみ以下を実行
+                  ?>
+                      <li class="gallery__item js-modal">
+                        <img src="<?php echo esc_url($image_url[0]); ?>" alt="ギャラリーの写真">
+                      </li>
+                  <?php
+                    endif; // ギャラリーアイテムが存在する場合のみの処理終了
+                  endforeach;
+                  ?>
+                </ul>
+              </div>
+              <div class="gallery__modal">
+                <!-- モーダル内のコンテンツ -->
+                <img src="" alt="ギャラリーの写真" class="gallery__modal-image" />
+              </div>
+              <!-- モーダル外のクリック領域 -->
+              <div class="gallery__modal-overlay"></div>
+            </div>
           </div>
-          <div class="gallery__container">
-            <ul class="gallery__items">
-               <?php
-                $imgGroup = SCF::get_option_meta( 'gallery-options', 'gallery_list' );
-                foreach ($imgGroup as $fields ) :
-                    $image_url = wp_get_attachment_image_src($fields['gallery_item'] , 'full');
-                ?>
-                <li class="gallery__item js-modal">
-                  <?php if (empty($fields['gallery_item'])) : ?>
-                    <!-- 画像がない時はnoImg画像を表示 -->
-                    <img src="<?php echo get_template_directory_uri(); ?>/img/noImage.jpg" alt="No Image">
-                  <?php else : ?>
-                    <!-- 画像がある時は画像を表示 -->
-                    <img src="<?php echo esc_url($image_url[0]); ?>" alt="ギャラリーの写真">
-                  <?php endif; ?>
-                </li>
-              <?php endforeach; ?>
-            </ul>
-          </div>
-          <div class="gallery__modal">
-            <!-- モーダル内のコンテンツ -->
-            <img src="" alt="ギャラリーの写真" class="gallery__modal-image" />
-          </div>
-          <!-- モーダル外のクリック領域 -->
-          <div class="gallery__modal-overlay"></div>
-        </div>
-      </div>
+      <?php
+        endif; // ギャラリーアイテムが存在する場合のみの処理終了
+      endif; // ギャラリーアイテムが存在する場合のみの処理終了
+      ?>
+
     </div>
   </section>
   <?php get_footer(); ?>

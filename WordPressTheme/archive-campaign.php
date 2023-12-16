@@ -18,26 +18,34 @@
     <div class="lower-campaign__inner inner">
       <div class="lower-campaign__tab tab">
         <!-- タブ部分 -->
-        <ul class="tab__buttons">
-          <li class="tab__button current-cat">
-            <a href="<?php echo esc_url(get_post_type_archive_link('campaign')); ?>">ALL</a>
-          </li>
-          <?php
-          $taxonomy_terms = get_terms('campaign_category', array('hide_empty' => false));
-          foreach ($taxonomy_terms as $taxonomy_term) :
-          ?>
-            <li class="tab__button">
-              <a href="<?php echo esc_url(get_term_link($taxonomy_term, 'campaign_category')); ?>">
-                <?php echo esc_html($taxonomy_term->name); ?>
-              </a>
+        <?php
+        $taxonomy_terms = get_terms('campaign_category', array('hide_empty' => false));
+        if (!empty($taxonomy_terms) && !is_wp_error($taxonomy_terms)) :
+        ?>
+          <ul class="tab__buttons">
+            <li class="tab__button current-cat">
+              <a href="<?php echo esc_url(get_post_type_archive_link('campaign')); ?>">ALL</a>
             </li>
-          <?php endforeach; ?>
-        </ul>
+            <?php
+            foreach ($taxonomy_terms as $taxonomy_term) :
+            ?>
+              <li class="tab__button">
+                <a href="<?php echo esc_url(get_term_link($taxonomy_term, 'campaign_category')); ?>">
+                  <?php echo esc_html($taxonomy_term->name); ?>
+                </a>
+              </li>
+            <?php
+            endforeach;
+            ?>
+          </ul>
+        <?php
+        endif;
+        ?>
         <!-- コンテンツ -->
         <div class="tab__wrapper">
-          <ul class="tab__items">
-            <?php if (have_posts()) :
-              while (have_posts()) :
+          <?php if (have_posts()) : ?>
+            <ul class="tab__items">
+              <?php while (have_posts()) :
                 the_post(); ?>
                 <li class="tab__item">
                   <div class="price-card">
@@ -62,16 +70,21 @@
                       <p class="price-card__text">全部コミコミ(お一人様)</p>
                       <div class="price-card__price-box">
                         <?php
-                        $campaign_price = get_field('campaign-price');
-                        if ($campaign_price) :
+                        $campaign_regular = get_field('campaign-price');
+                        if ($campaign_regular['campaign-regular']) :
                         ?>
                           <p class="price-card__price">
-                            <span class="price-card__price--redline">¥<?php echo $campaign_price['campaign-regular'] ?></span>
-                          </p>
-                          <p class="price-card__discount">
-                            ¥<?php echo $campaign_price['campaign-discount']; ?>
+                            <span class="price-card__price--redline">¥<?php echo $campaign_regular['campaign-regular'] ?></span>
                           </p>
                         <?php endif; ?>
+                        <?php
+                        $campaign_discount = get_field('campaign-price');
+                        if ($campaign_discount['campaign-discount']) : ?>
+                          <p class="price-card__discount">
+                            ¥<?php echo $campaign_discount['campaign-discount']; ?>
+                          </p>
+                        <?php endif; ?>
+
                       </div>
                     </div>
                     <div class="price-card__pc u-desktop">
@@ -85,7 +98,7 @@
                         <?php $campaign_period = get_field('campaign-period');
                         if ($campaign_period) : ?>
                           <p class="price-card__period">
-                            <?php echo $campaign_period['campaign-start']; ?>&nbsp;&#45;&nbsp;<?php echo $campaign_period['campaign-end'];; ?>
+                            <?php echo $campaign_period['campaign-start']; ?>&nbsp;&#45;&nbsp;<?php echo $campaign_period['campaign-end']; ?>
                           </p>
                         <?php endif; ?>
                         <p class="price-card__contact">
@@ -100,9 +113,9 @@
                     </div>
                   </div>
                 </li>
-            <?php endwhile;
-            endif; ?>
-          </ul>
+              <?php endwhile; ?>
+            </ul>
+          <?php endif; ?>
         </div>
         <!-- page-navi-->
         <div class="lower-campaign__pagenavi">
