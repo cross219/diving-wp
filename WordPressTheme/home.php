@@ -17,9 +17,9 @@
     <div class="lower-blog__inner inner">
       <div class="lower-blog__contents">
         <div class="lower-blog__content">
-          <div class="lower-blog__items blog-cards blog-cards--lower">
-            <?php if (have_posts()) :
-              while (have_posts()) :
+          <?php if (have_posts()) : ?>
+            <div class="lower-blog__items blog-cards blog-cards--lower">
+              <?php while (have_posts()) :
                 the_post(); ?>
                 <a href="<?php the_permalink(); ?>" class="blog-cards__item blog-card">
                   <div class="blog-card__img">
@@ -39,16 +39,16 @@
                     </div>
                   </div>
                 </a>
-            <?php endwhile;
-            endif; ?>
-          </div>
-          <div class="lower-blog__pagenavi">
-            <?php wp_pagenavi(); ?>
-          </div>
+              <?php endwhile; ?>
+            </div>
+            <div class="lower-blog__pagenavi">
+              <?php wp_pagenavi(); ?>
+            </div>
         </div>
-        <div class="lower-blog__aside">
-          <?php get_sidebar(); ?>
-        </div>
+      <?php endif; ?>
+      <div class="lower-blog__aside">
+        <?php get_sidebar(); ?>
+      </div>
       </div>
     </div>
   </section>

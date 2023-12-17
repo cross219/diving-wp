@@ -95,8 +95,10 @@
                         </p>
                       <?php endif; ?>
                       <div class="price-card__link-items">
-                        <?php $campaign_period = get_field('campaign-period');
-                        if ($campaign_period) : ?>
+                        <?php
+                        $campaign_period = get_field('campaign-period');
+                        if (!empty($campaign_period['campaign-start']) && !empty($campaign_period['campaign-end'])) :
+                        ?>
                           <p class="price-card__period">
                             <?php echo $campaign_period['campaign-start']; ?>&nbsp;&#45;&nbsp;<?php echo $campaign_period['campaign-end']; ?>
                           </p>

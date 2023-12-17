@@ -23,26 +23,6 @@ $sitemap = esc_url(home_url('/sitemap/'));
     <div class="fv__inner">
       <div class="fv__images">
         <!-- Swiper -->
-        <!-- <div class="swiper js-fv-swiper">
-          <div class="swiper-wrapper">
-            <?php
-            $mv_pc_img = get_field('mv-pc');
-            $mv_sp_img = get_field('mv-sp');
-            $mv_alt = get_field('mv-alt');
-            for ($i = 1; $i <= 4; $i++) :
-              $sp_src = $mv_sp_img['mv-sp' . $i];
-              $pc_src = $mv_pc_img['mv-pc' . $i];
-              $alt = $mv_alt['mv-alt' . $i];
-            ?>
-              <div class="swiper-slide">
-                <picture class="fv__img">
-                  <source srcset="<?php echo $sp_src; ?>" media="(max-width: 768px)" />
-                  <img src="<?php echo $pc_src; ?>" alt="<?php echo $alt; ?>" />
-                </picture>
-              </div>
-            <?php endfor; ?>
-          </div>
-        </div> -->
         <div class="swiper js-fv-swiper">
           <div class="swiper-wrapper">
             <?php
@@ -81,14 +61,14 @@ $sitemap = esc_url(home_url('/sitemap/'));
         <h2 class="section-title__en">Campaign</h2>
         <p class="section-title__ja">キャンペーン</p>
       </div>
-      <div class="campaign__items price-cards swiper js-campaign-swiper">
-        <?php
-        $args = [
-          'post_type' => 'campaign',
-          'posts_per_page' => 10
-        ];
-        $the_query = new WP_Query($args); ?>
-        <?php if ($the_query->have_posts()) : ?>
+      <?php
+      $args = [
+        'post_type' => 'campaign',
+        'posts_per_page' => 10
+      ];
+      $the_query = new WP_Query($args); ?>
+      <?php if ($the_query->have_posts()) : ?>
+        <div class="campaign__items price-cards swiper js-campaign-swiper">
           <div class="swiper-wrapper price-cards__items">
             <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
               <div class="swiper-slide price-cards__item">
@@ -112,14 +92,18 @@ $sitemap = esc_url(home_url('/sitemap/'));
                     <p class="price-card__text">全部コミコミ(お一人様)</p>
                     <div class="price-card__price-box">
                       <?php
-                      $campaign_price = get_field('campaign-price');
-                      if ($campaign_price) :
+                      $campaign_regular = get_field('campaign-price');
+                      if ($campaign_regular['campaign-regular']) :
                       ?>
                         <p class="price-card__price">
-                          <span class="price-card__price--redline">¥<?php echo $campaign_price['campaign-regular'] ?></span>
+                          <span class="price-card__price--redline">¥<?php echo $campaign_regular['campaign-regular'] ?></span>
                         </p>
+                      <?php endif; ?>
+                      <?php
+                      $campaign_discount = get_field('campaign-price');
+                      if ($campaign_discount['campaign-discount']) : ?>
                         <p class="price-card__discount">
-                          ¥<?php echo $campaign_price['campaign-discount']; ?>
+                          ¥<?php echo $campaign_discount['campaign-discount']; ?>
                         </p>
                       <?php endif; ?>
                     </div>
@@ -129,8 +113,8 @@ $sitemap = esc_url(home_url('/sitemap/'));
             <?php endwhile; ?>
           </div>
           <?php wp_reset_postdata(); ?>
-        <?php endif; ?>
-      </div>
+        </div>
+      <?php endif; ?>
       <div class="campaign-swiper__button-box">
         <div class="campaign-swiper__button-prev"></div>
         <div class="campaign-swiper__button-next"></div>

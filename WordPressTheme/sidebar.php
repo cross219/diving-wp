@@ -13,19 +13,19 @@ $contact = esc_url(home_url('/contact/'));
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/aside-icon.png" class="aside-title__icon" alt=""></img>
           <h2 class="aside-title__text">人気記事</h2>
         </div>
-        <div class="aside-article__items">
-          <?php
-          setPostViews(get_the_ID());
-          $args = array(
-            'post_type' => 'post',
-            'posts_per_page' => 3,
-            'orderby' => 'meta_value_num',
-            'meta_key' => 'post_views_count'
-          );
-          $the_query = new WP_Query($args);
-          ?>
-          <?php if ($the_query->have_posts()) : ?>
-            <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+        <?php
+        setPostViews(get_the_ID());
+        $args = array(
+          'post_type' => 'post',
+          'posts_per_page' => 3,
+          'orderby' => 'meta_value_num',
+          'meta_key' => 'post_views_count'
+        );
+        $the_query = new WP_Query($args);
+        ?>
+        <?php if ($the_query->have_posts()) : ?>
+          <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+            <div class="aside-article__items">
               <a href="<?php the_permalink(); ?>" class="aside-article__item">
                 <figure class="aside-article__img">
                   <?php if (get_the_post_thumbnail()) : ?>
@@ -39,10 +39,10 @@ $contact = esc_url(home_url('/contact/'));
                   <h3 class="aside-article__title"><?php the_title(); ?></h3>
                 </div>
               </a>
-            <?php endwhile; ?>
-          <?php endif; ?>
-          <?php wp_reset_postdata(); ?>
-        </div>
+            </div>
+          <?php endwhile; ?>
+        <?php endif; ?>
+        <?php wp_reset_postdata(); ?>
       </div>
     </div>
     <div class="aside__item">
@@ -51,19 +51,19 @@ $contact = esc_url(home_url('/contact/'));
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/aside-icon.png" class="aside-title__icon" alt=""></img>
           <h2 class="aside-title__text">口コミ</h2>
         </div>
-        <div class="aside-voice__items">
-          <?php $recent_query = new WP_Query(
-            array(
-              'post_type' => 'voice',
-              'posts_per_page' => 1,
-              'orderby' => 'date',
-              'order' => 'DESC',
-            )
-          );
-          ?>
-          <?php if ($recent_query->have_posts()) : ?>
-            <?php while ($recent_query->have_posts()) : ?>
-              <?php $recent_query->the_post(); ?>
+        <?php $recent_query = new WP_Query(
+          array(
+            'post_type' => 'voice',
+            'posts_per_page' => 1,
+            'orderby' => 'date',
+            'order' => 'DESC',
+          )
+        );
+        ?>
+        <?php if ($recent_query->have_posts()) : ?>
+          <?php while ($recent_query->have_posts()) : ?>
+            <?php $recent_query->the_post(); ?>
+            <div class="aside-voice__items">
               <div class="aside-voice__item">
                 <?php if (get_the_post_thumbnail()) : ?>
                   <img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>のアイキャッチ画像">
@@ -80,10 +80,10 @@ $contact = esc_url(home_url('/contact/'));
                 <?php endif; ?>
                 <h3 class="aside-voice__title"><?php the_title(); ?></h3>
               </div>
-            <?php endwhile; ?>
-          <?php endif; ?>
-          <?php wp_reset_postdata(); ?>
-        </div>
+            </div>
+          <?php endwhile; ?>
+        <?php endif; ?>
+        <?php wp_reset_postdata(); ?>
         <div class="aside-voice__button">
           <a href="<?php echo $voice; ?>" class="button">View more<span class="button__arrow"></span></a>
         </div>
@@ -95,19 +95,19 @@ $contact = esc_url(home_url('/contact/'));
           <img src="<?php echo get_theme_file_uri(); ?>/assets/images/common/aside-icon.png" class="aside-title__icon" alt=""></img>
           <h2 class="aside-title__text">キャンペーン</h2>
         </div>
-        <div class="aside-campaign__items">
-          <?php $recent_query = new WP_Query(
-            array(
-              'post_type' => 'campaign',
-              'posts_per_page' => 2,
-              'orderby' => 'date',
-              'order' => 'DESC',
-            )
-          );
-          ?>
-          <?php if ($recent_query->have_posts()) : ?>
-            <?php while ($recent_query->have_posts()) : ?>
-              <?php $recent_query->the_post(); ?>
+        <?php $recent_query = new WP_Query(
+          array(
+            'post_type' => 'campaign',
+            'posts_per_page' => 2,
+            'orderby' => 'date',
+            'order' => 'DESC',
+          )
+        );
+        ?>
+        <?php if ($recent_query->have_posts()) : ?>
+          <?php while ($recent_query->have_posts()) : ?>
+            <?php $recent_query->the_post(); ?>
+            <div class="aside-campaign__items">
               <div class="aside-campaign__item price-card">
                 <div class="price-card__img price-card__img--blog">
                   <?php if (get_the_post_thumbnail()) : ?>
@@ -140,10 +140,10 @@ $contact = esc_url(home_url('/contact/'));
                   </div>
                 </div>
               </div>
-            <?php endwhile; ?>
-          <?php endif; ?>
-          <?php wp_reset_postdata(); ?>
-        </div>
+            </div>
+          <?php endwhile; ?>
+        <?php endif; ?>
+        <?php wp_reset_postdata(); ?>
         <div class="aside-campaign__button">
           <a href="<?php echo $campaign; ?>" class="button">View more<span class="button__arrow"></span></a>
         </div>
@@ -220,16 +220,12 @@ $contact = esc_url(home_url('/contact/'));
                             </p>
                           </a>
                         </li>
-                    <?php
-                      endif;
-                    endfor;
-                    ?>
+                    <?php endif;
+                    endfor; ?>
                   </ul>
                 </li>
-            <?php
-              endif;
-            endfor;
-            ?>
+            <?php endif;
+            endfor; ?>
           </ul>
         </div>
       </div>

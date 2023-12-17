@@ -16,26 +16,30 @@
     <div class="archive-voice__inner inner">
       <div class="archive-voice__tab tab">
         <!-- タブ部分 -->
-        <ul class="tab__buttons">
-          <li class="tab__button current-cat">
-            <a href="<?php echo esc_url(get_post_type_archive_link('voice')); ?>">ALL</a>
-          </li>
-          <?php
-          $taxonomy_terms = get_terms('voice_category', array('hide_empty' => false));
-          foreach ($taxonomy_terms as $taxonomy_term) :
-          ?>
-            <li class="tab__button">
-              <a href="<?php echo esc_url(get_term_link($taxonomy_term, 'voice_category')); ?>">
-                <?php echo esc_html($taxonomy_term->name); ?>
-              </a>
+        <?php
+        $taxonomy_terms = get_terms('voice_category', array('hide_empty' => false));
+        if (!empty($taxonomy_terms) && !is_wp_error($taxonomy_terms)) :
+        ?>
+          <ul class="tab__buttons">
+            <li class="tab__button current-cat">
+              <a href="<?php echo esc_url(get_post_type_archive_link('voice')); ?>">ALL</a>
             </li>
-          <?php endforeach; ?>
-        </ul>
+            <?php
+            foreach ($taxonomy_terms as $taxonomy_term) :
+            ?>
+              <li class="tab__button">
+                <a href="<?php echo esc_url(get_term_link($taxonomy_term, 'voice_category')); ?>">
+                  <?php echo esc_html($taxonomy_term->name); ?>
+                </a>
+              </li>
+            <?php endforeach; ?>
+          </ul>
+        <?php endif; ?>
         <!-- コンテンツ -->
         <div class="tab__wrapper">
-          <ul class="voice-cards">
-            <?php if (have_posts()) :
-              while (have_posts()) :
+          <?php if (have_posts()) : ?>
+            <ul class="voice-cards">
+              <?php while (have_posts()) :
                 the_post(); ?>
                 <li class="vice-cards__item voice-card">
                   <div class="voice-card__upper">
@@ -46,7 +50,7 @@
                         if ($voice_meta) :
                         ?>
                           <div class="voice-card__meta">
-                          <?php echo $voice_meta['voice-age']; ?>&#40;<?php echo $voice_meta['voice-attribute']; ?>&#41;
+                            <?php echo $voice_meta['voice-age']; ?>&#40;<?php echo $voice_meta['voice-attribute']; ?>&#41;
                           </div>
                         <?php endif; ?>
                         <?php
@@ -76,9 +80,9 @@
                     </div>
                   <?php endif; ?>
                 </li>
-            <?php endwhile;
-            endif; ?>
-          </ul>
+              <?php endwhile; ?>
+            </ul>
+          <?php endif; ?>
         </div>
       </div>
       <!-- page-navi-->
